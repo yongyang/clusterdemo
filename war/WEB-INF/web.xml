@@ -8,17 +8,17 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>jboss.demos.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>org.jboss.demos.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/cluster/greet</url-pattern>
+    <url-pattern>/clusterdemo/greet</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>Cluster.html</welcome-file>
+    <welcome-file>ClusterDemo.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

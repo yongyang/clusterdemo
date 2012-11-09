@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="Cluster" default="build" basedir=".">
+<project name="ClusterDemo" default="build" basedir=".">
   <!-- Arguments to gwtc and devmode targets -->
   <property name="gwt.args" value="" />
 
@@ -48,7 +48,7 @@
       <arg value="war"/>
       <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
       <arg line="${gwt.args}"/>
-      <arg value="jboss.demos.Cluster"/>
+      <arg value="org.jboss.demos.ClusterDemo"/>
     </java>
   </target>
 
@@ -62,23 +62,12 @@
       </classpath>
       <jvmarg value="-Xmx256M"/>
       <arg value="-startupUrl"/>
-      <arg value="Cluster.html"/>
+      <arg value="ClusterDemo.html"/>
       <arg line="-war"/>
       <arg value="war"/>
       <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
       <arg line="${gwt.args}"/>
-      <arg value="jboss.demos.Cluster"/>
-    </java>
-  </target>
-
-  <target name="eclipse.generate" depends="libs" description="Generate eclipse project">
-    <java failonerror="true" fork="true" classname="com.google.gwt.user.tools.WebAppCreator">
-      <classpath>
-        <path refid="project.class.path"/>
-      </classpath>
-      <arg value="-XonlyEclipse"/>
-      <arg value="-ignore"/>
-      <arg value="jboss.demos.Cluster"/>
+      <arg value="org.jboss.demos.ClusterDemo"/>
     </java>
   </target>
 
@@ -150,12 +139,12 @@
   <target name="build" depends="gwtc" description="Build this project" />
 
   <target name="war" depends="build" description="Create a war file">
-    <zip destfile="Cluster.war" basedir="war"/>
+    <zip destfile="ClusterDemo.war" basedir="war"/>
   </target>
 
   <target name="clean" description="Cleans this project">
     <delete dir="war/WEB-INF/classes" failonerror="false" />
-    <delete dir="war/cluster" failonerror="false" />
+    <delete dir="war/clusterdemo" failonerror="false" />
   </target>
 
 </project>

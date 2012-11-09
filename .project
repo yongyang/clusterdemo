@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <projectDescription>
-   <name>Cluster</name>
-   <comment>Cluster project</comment>
+   <name>ClusterDemo</name>
+   <comment>ClusterDemo project</comment>
    <projects/>
    <buildSpec>
        <buildCommand>
