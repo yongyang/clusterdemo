@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AntConfiguration">
+    <defaultAnt bundledAnt="true" />
+  </component>
+  <component name="ArtifactManager">
+    <artifact name="ClusterDemo:GWT">
+      <output-path>$PROJECT_DIR$/out/artifacts/ClusterDemo_GWT</output-path>
+      <root id="root">
+        <element id="gwt-compiler-output" facet="ClusterDemo/gwt/GWT" />
+      </root>
+    </artifact>
+    <artifact type="exploded-war" name="ClusterDemo:Web exploded">
+      <output-path>$PROJECT_DIR$/out/artifacts/ClusterDemo_Web_exploded</output-path>
+      <root id="root">
+        <element id="javaee-facet-resources" facet="ClusterDemo/web/Web" />
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="ClusterDemo" />
+          </element>
+        </element>
+      </root>
+    </artifact>
+  </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions />
@@ -63,6 +85,9 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="IdProvider" IDEtalkID="258493736A93AF330B2055347FC2D702" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
@@ -206,6 +231,19 @@
       </item>
     </group>
   </component>
+  <component name="ProjectFacetManager">
+    <default-configurations>
+      <entry facet-type="gwt">
+        <default-facet-configuration>
+          <configuration>
+            <setting name="compilerMaxHeapSize" value="512" />
+            <setting name="gwtScriptOutputStyle" value="PRETTY" />
+            <setting name="gwtSdkUrl" value="file://$PROJECT_DIR$/../../GWT/gwt-2.5.0" />
+          </configuration>
+        </default-facet-configuration>
+      </entry>
+    </default-configurations>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -223,6 +261,9 @@
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectResources">
+    <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
@@ -328,21 +369,39 @@
     <mapping directory="" vcs="Git" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.5</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="libraryTable">
+    <library name="gwt-2..5.0">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-api-checker.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-benchmark-viewer.war!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-codeserver.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-dev.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-elemental.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet-deps.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-apt.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-client+src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-client.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-server+src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-server.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-codeserver.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-dev.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-elemental.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-apt-src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-client+src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-client-src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-server+src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-server-src.jar!/" />
+        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
+      </SOURCES>
+    </library>
   </component>
 </project>
 
