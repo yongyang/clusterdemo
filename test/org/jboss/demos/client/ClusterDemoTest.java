@@ -36,7 +36,7 @@ public class ClusterDemoTest extends GWTTestCase {
    */
   public void testGreetingService() {
     // Create the service that we will test.
-    GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    ManagementServiceAsync greetingService = GWT.create(ManagementService.class);
     ServiceDefTarget target = (ServiceDefTarget) greetingService;
     target.setServiceEntryPoint(GWT.getModuleBaseURL() + "clusterdemo/greet");
 

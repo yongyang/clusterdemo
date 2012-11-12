@@ -8,12 +8,12 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>org.jboss.demos.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>org.jboss.demos.server.ManagementServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/clusterdemo/greet</url-pattern>
+    <url-pattern>/clusterdemo/managementservice</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

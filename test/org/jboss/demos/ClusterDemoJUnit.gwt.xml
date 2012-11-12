@@ -10,6 +10,6 @@
   <inherits name='org.jboss.demos.ClusterDemo'/>
 
   <!-- Specify the path to any remote services.                   -->
-  <servlet path="/clusterdemo/greet" class="org.jboss.demos.server.GreetingServiceImpl" />
+  <servlet path="/clusterdemo/greet" class="org.jboss.demos.server.ManagementServiceImpl" />
 
 </module>

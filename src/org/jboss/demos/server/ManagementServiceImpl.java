@@ -1,6 +1,6 @@
 package org.jboss.demos.server;
 
-import org.jboss.demos.client.GreetingService;
+import org.jboss.demos.client.ManagementService;
 import org.jboss.demos.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -8,8 +8,8 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
  * The server side implementation of the RPC service.
  */
 @SuppressWarnings("serial")
-public class GreetingServiceImpl extends RemoteServiceServlet implements
-    GreetingService {
+public class ManagementServiceImpl extends RemoteServiceServlet implements
+                                                              ManagementService {
 
   public String greetServer(String input) throws IllegalArgumentException {
     // Verify that the input is valid. 
