@@ -25,7 +25,7 @@ public class Cluster {
     List<Node> nodes;
     boolean imageLoaded;
 
-    double k;
+    double step;
 
     public Cluster(double width, double height, int numNodes, double radius) {
         this.width = width;
@@ -59,13 +59,13 @@ public class Cluster {
             return;
         }
 
-        k = (k + Math.PI/2.0 * 0.009);
+        step = (step + Math.PI/2.0 * 0.003);
 
         for (int i = numNodes - 1; i >= 0; i--) {
             Node node = nodes.get(i);
             double logoPerTPi = 2 * Math.PI * i / numNodes;
-            Vector goal = new Vector(width / 2 + radius * Math.cos(k + logoPerTPi),
-                    height / 2 + radius * Math.sin(k + logoPerTPi));
+            Vector goal = new Vector(width / 2 + radius * Math.cos(step + logoPerTPi),
+                    height / 2 + radius * Math.sin(step + logoPerTPi));
             node.setPosition(goal.getX(), goal.getY());
         }
     }
