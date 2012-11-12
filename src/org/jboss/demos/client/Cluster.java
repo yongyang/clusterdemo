@@ -70,7 +70,7 @@ public class Cluster {
         }
     }
 
-    public void draw(Context2d context) {
+    void draw(Context2d context) {
         if (!imageLoaded) {
             return;
         }
