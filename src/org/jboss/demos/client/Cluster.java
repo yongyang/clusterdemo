@@ -1,13 +1,14 @@
 package org.jboss.demos.client;
 
 import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.canvas.dom.client.CssColor;
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
@@ -17,11 +18,11 @@ public class Cluster {
 
     final double width;
     final double height;
-    final int numLogos;
+    final int numNodes;
     final double radius;
 
     Image nodeImg;
-    Node[] nodes;
+    List<Node> nodes;
     boolean imageLoaded;
 
     double k;
@@ -29,11 +30,11 @@ public class Cluster {
     public Cluster(double width, double height, int numNodes, double radius) {
         this.width = width;
         this.height = height;
-        this.numLogos = numNodes;
+        this.numNodes = numNodes;
         this.radius = radius;
 
         // init logos array
-        nodes = new Node[numNodes];
+        nodes = new ArrayList<Node>(numNodes);
 
         // init image
         nodeImg = new Image("raspeberry-pi-logo.jpg");
@@ -42,10 +43,10 @@ public class Cluster {
                 imageLoaded = true;
                 // once image is loaded, init logo objects
                 ImageElement imageElement = (ImageElement) nodeImg.getElement().cast();
-                for (int i = nodes.length - 1; i >= 0; i--) {
-                    Node node = new Node(imageElement);
+                for (int i = Cluster.this.numNodes - 1; i >= 0; i--) {
+                    Node node = new Node();
                     node.setPosition(Cluster.this.width / 2, Cluster.this.height / 2);
-                    nodes[i] = node;
+                    nodes.add(node);
                 }
             }
         });
@@ -60,14 +61,12 @@ public class Cluster {
 
         k = (k + Math.PI/2.0 * 0.009);
 
-        for (int i = numLogos - 1; i >= 0; i--) {
-            Node node = nodes[i];
-            double logoPerTPi = 2 * Math.PI * i / numLogos;
+        for (int i = numNodes - 1; i >= 0; i--) {
+            Node node = nodes.get(i);
+            double logoPerTPi = 2 * Math.PI * i / numNodes;
             Vector goal = new Vector(width / 2 + radius * Math.cos(k + logoPerTPi),
                     height / 2 + radius * Math.sin(k + logoPerTPi));
-            node.setGoal(goal.x, goal.y);
-
-            node.update();
+            node.setPosition(goal.getX(), goal.getY());
         }
     }
 
@@ -83,10 +82,14 @@ public class Cluster {
         context.fill();
         context.closePath();
 */
-
-        for (int i = numLogos - 1; i >= 0; i--) {
-            nodes[i].draw(context);
+        for (int i = numNodes - 1; i >= 0; i--) {
+            Node node = nodes.get(i);
+            context.save();
+            context.translate(node.getPosition().getX(), node.getPosition().getY());
+            context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
+            context.restore();
         }
+
     }
 
 }

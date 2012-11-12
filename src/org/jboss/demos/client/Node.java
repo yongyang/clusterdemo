@@ -10,26 +10,19 @@ import com.google.gwt.dom.client.ImageElement;
  */
 public class Node {
 
-    private Vector position;
-
-    private ImageElement image;
+    private Vector position = new Vector(0, 0);
 
     private String ip;
 
-    public Node(ImageElement image) {
-        position = new Vector(0, 0);
-        this.image = image;
+    public Node() {
+
     }
 
     public void setPosition(double x, double y) {
         this.position.set(x, y);
     }
 
-    public void draw(Context2d context) {
-        context.save();
-        context.translate(this.position.x, this.position.y);
-        context.drawImage(image, 0, 0);
-        context.restore();
+    public Vector getPosition() {
+        return position;
     }
-
 }
