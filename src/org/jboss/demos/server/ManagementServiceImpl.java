@@ -11,7 +11,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class ManagementServiceImpl extends RemoteServiceServlet implements
                                                               ManagementService {
 
-  public String greetServer(String input) throws IllegalArgumentException {
+  public String getClusterInfo(String input) throws IllegalArgumentException {
     // Verify that the input is valid. 
     if (!FieldVerifier.isValidName(input)) {
       // If the input is not valid, throw an IllegalArgumentException back to

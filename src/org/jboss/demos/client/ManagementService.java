@@ -8,5 +8,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("managementservice")
 public interface ManagementService extends RemoteService {
-  String greetServer(String name) throws IllegalArgumentException;
+
+    String getClusterInfo(String name) throws IllegalArgumentException;
+
 }

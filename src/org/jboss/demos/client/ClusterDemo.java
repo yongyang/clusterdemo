@@ -33,7 +33,7 @@ public class ClusterDemo implements EntryPoint {
     // canvas size, in px
     static final int height = 600;
     static final int width = 600;
-    final CssColor redrawColor = CssColor.make("white");
+    static final CssColor REDRAW_COLOR = CssColor.make("white");
 
     /**
    * The message displayed to the user when the server cannot be reached or
@@ -46,7 +46,7 @@ public class ClusterDemo implements EntryPoint {
   /**
    * Create a remote service proxy to talk to the server-side Greeting service.
    */
-  private final ManagementServiceAsync greetingService = GWT.create(ManagementService.class);
+  private final ManagementServiceAsync managementService = GWT.create(ManagementService.class);
 
   /**
    * This is the entry point method.
@@ -117,7 +117,7 @@ public class ClusterDemo implements EntryPoint {
     void redraw() {
 
         // reset bufferContext2d
-        bufferContext2d.setFillStyle(redrawColor);
+        bufferContext2d.setFillStyle(REDRAW_COLOR);
         bufferContext2d.fillRect(0, 0, width, height);
 
         // draw image to bufferContext2d
