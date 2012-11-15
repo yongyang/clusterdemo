@@ -5,6 +5,8 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
+  <distributable/>
+
   <context-param>
     <param-name>MANAGEMENT_IP</param-name>
     <param-value>127.0.0.1</param-value>

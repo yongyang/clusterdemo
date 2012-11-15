@@ -1,8 +1,14 @@
 package org.jboss.demos.server;
 
+import org.jboss.as.server.CurrentServiceContainer;
 import org.jboss.demos.client.ManagementService;
-import org.jboss.demos.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.jboss.msc.service.ServiceName;
+import org.jgroups.Address;
+import org.jgroups.Channel;
+import org.jgroups.JChannel;
+
+import java.util.List;
 
 /**
  * The server side implementation of the RPC service.
@@ -11,38 +17,12 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class ManagementServiceImpl extends RemoteServiceServlet implements
                                                               ManagementService {
 
-  public String getClusterInfo(String input) throws IllegalArgumentException {
-    // Verify that the input is valid. 
-    if (!FieldVerifier.isValidName(input)) {
-      // If the input is not valid, throw an IllegalArgumentException back to
-      // the client.
-      throw new IllegalArgumentException(
-          "Name must be at least 4 characters long");
-    }
+  public String getClusterInfo(String input) {
 
-    String serverInfo = getServletContext().getServerInfo();
-    String userAgent = getThreadLocalRequest().getHeader("User-Agent");
+      JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
+      List<Address> members = channel.getView().getMembers();
 
-    // Escape data from the client to avoid cross-site script vulnerabilities.
-    input = escapeHtml(input);
-    userAgent = escapeHtml(userAgent);
-
-    return "Hello, " + input + "!<br><br>I am running " + serverInfo
-        + ".<br><br>It looks like you are using:<br>" + userAgent;
-  }
-
-  /**
-   * Escape an html string. Escaping data received from the client helps to
-   * prevent cross-site script vulnerabilities.
-   * 
-   * @param html the html string to escape
-   * @return the escaped string
-   */
-  private String escapeHtml(String html) {
-    if (html == null) {
       return null;
-    }
-    return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(
-        ">", "&gt;");
+
   }
 }

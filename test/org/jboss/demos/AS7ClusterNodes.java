@@ -7,9 +7,14 @@ package org.jboss.demos;
  * Time: 下午11:23
  * To change this template use File | Settings | File Templates.
  */
+import org.jboss.as.server.CurrentServiceContainer;
 import org.jboss.msc.service.ServiceName;
+import org.jgroups.Address;
+import org.jgroups.Channel;
+import org.jgroups.JChannel;
 
 import java.util.Hashtable;
+import java.util.List;
 import javax.management.MBeanServerConnection;
 import javax.management.ObjectName;
 import javax.management.remote.JMXConnector;
@@ -48,7 +53,8 @@ public class AS7ClusterNodes {
     }
 
     public static void main2(String[] args) throws Exception{
-        Channel channel = (Channel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
+        JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
+        List<Address> members = channel.getView().getMembers();
     }
 
 }
