@@ -6,8 +6,13 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.jboss.msc.service.ServiceName;
 import org.jgroups.Address;
 import org.jgroups.Channel;
+import org.jgroups.Event;
 import org.jgroups.JChannel;
+import org.jgroups.PhysicalAddress;
+import org.jgroups.stack.IpAddress;
+import org.jgroups.util.UUID;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,7 +27,13 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
       JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
       List<Address> members = channel.getView().getMembers();
 
-      return null;
+      StringBuffer sb = new StringBuffer();
+      for(Address address : members){
+          IpAddress physicalAddr = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
+          sb.append(physicalAddr.getClass().getName()).append(": ").append(physicalAddr.getIpAddress().getHostAddress()).append(":").append(physicalAddr.getPort()).append("\n");
+      }
+
+      return sb.toString();
 
   }
 }
