@@ -1,6 +1,7 @@
 package org.jboss.demos.client;
 
 import com.google.gwt.canvas.dom.client.Context2d;
+import com.google.gwt.canvas.dom.client.CssColor;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
@@ -22,7 +23,7 @@ public class Cluster {
     final double radius;
 
     Image nodeImg;
-    List<Node> nodes;
+    List<ClientClusterNode> clientClusterNodes;
     boolean imageLoaded;
 
     double step;
@@ -34,7 +35,7 @@ public class Cluster {
         this.radius = radius;
 
         // init logos array
-        nodes = new ArrayList<Node>(numNodes);
+        clientClusterNodes = new ArrayList<ClientClusterNode>(numNodes);
 
         // init image
         nodeImg = new Image("raspeberry-pi-logo.jpg");
@@ -44,9 +45,9 @@ public class Cluster {
                 // once image is loaded, init logo objects
                 ImageElement imageElement = (ImageElement) nodeImg.getElement().cast();
                 for (int i = Cluster.this.numNodes - 1; i >= 0; i--) {
-                    Node node = new Node();
-                    node.setPosition(Cluster.this.width / 2, Cluster.this.height / 2);
-                    nodes.add(node);
+                    ClientClusterNode clientClusterNode = new ClientClusterNode(null);
+                    clientClusterNode.setPosition(Cluster.this.width / 2, Cluster.this.height / 2);
+                    clientClusterNodes.add(clientClusterNode);
                 }
             }
         });
@@ -62,11 +63,11 @@ public class Cluster {
         step = (step + Math.PI/2.0 * 0.003);
 
         for (int i = numNodes - 1; i >= 0; i--) {
-            Node node = nodes.get(i);
+            ClientClusterNode clientClusterNode = clientClusterNodes.get(i);
             double logoPerTPi = 2 * Math.PI * i / numNodes;
             Vector goal = new Vector(width / 2 + radius * Math.cos(step + logoPerTPi),
                     height / 2 + radius * Math.sin(step + logoPerTPi));
-            node.setPosition(goal.getX(), goal.getY());
+            clientClusterNode.setPosition(goal.getX(), goal.getY());
         }
     }
 
@@ -83,10 +84,14 @@ public class Cluster {
         context.closePath();
 */
         for (int i = numNodes - 1; i >= 0; i--) {
-            Node node = nodes.get(i);
+            ClientClusterNode clientClusterNode = clientClusterNodes.get(i);
             context.save();
-            context.translate(node.getPosition().getX(), node.getPosition().getY());
+            context.beginPath();
+            context.translate(clientClusterNode.getPosition().getX(), clientClusterNode.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
+            context.setFillStyle(CssColor.make("blue"));
+            context.fillText("192.168.0.100:5555", 0, 80);
+            context.closePath();
             context.restore();
         }
 

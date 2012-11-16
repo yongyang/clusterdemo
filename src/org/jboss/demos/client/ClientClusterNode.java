@@ -1,21 +1,19 @@
 package org.jboss.demos.client;
 
-import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.dom.client.ImageElement;
+import org.jboss.demos.shared.ClusterNodeInfo;
 
 /**
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
  * @create 11/12/12 10:11 AM
  */
-public class Node {
+public class ClientClusterNode {
 
     private Vector position = new Vector(0, 0);
 
-    private String ip;
+    private ClusterNodeInfo clusterNodeInfo;
 
-    public Node() {
-
+    public ClientClusterNode(ClusterNodeInfo clusterNodeInfo) {
+        this.clusterNodeInfo = clusterNodeInfo;
     }
 
     public void setPosition(double x, double y) {
@@ -25,4 +23,9 @@ public class Node {
     public Vector getPosition() {
         return position;
     }
+
+    public ClusterNodeInfo getClusterNodeInfo() {
+        return clusterNodeInfo;
+    }
+
 }
