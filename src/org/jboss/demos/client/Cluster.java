@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
+import org.jboss.demos.shared.ClusterNodeInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Cluster {
     final double radius;
 
     Image nodeImg;
-    List<ClientClusterNode> clientClusterNodes;
+    List<Node> nodes;
     boolean imageLoaded;
 
     double step;
@@ -35,7 +36,7 @@ public class Cluster {
         this.radius = radius;
 
         // init logos array
-        clientClusterNodes = new ArrayList<ClientClusterNode>(numNodes);
+        nodes = new ArrayList<Node>(numNodes);
 
         // init image
         nodeImg = new Image("raspeberry-pi-logo.jpg");
@@ -45,9 +46,9 @@ public class Cluster {
                 // once image is loaded, init logo objects
                 ImageElement imageElement = (ImageElement) nodeImg.getElement().cast();
                 for (int i = Cluster.this.numNodes - 1; i >= 0; i--) {
-                    ClientClusterNode clientClusterNode = new ClientClusterNode(null);
-                    clientClusterNode.setPosition(Cluster.this.width / 2, Cluster.this.height / 2);
-                    clientClusterNodes.add(clientClusterNode);
+                    Node node = new Node(null);
+                    node.setPosition(Cluster.this.width / 2, Cluster.this.height / 2);
+                    nodes.add(node);
                 }
             }
         });
@@ -63,11 +64,11 @@ public class Cluster {
         step = (step + Math.PI/2.0 * 0.003);
 
         for (int i = numNodes - 1; i >= 0; i--) {
-            ClientClusterNode clientClusterNode = clientClusterNodes.get(i);
+            Node node = nodes.get(i);
             double logoPerTPi = 2 * Math.PI * i / numNodes;
             Vector goal = new Vector(width / 2 + radius * Math.cos(step + logoPerTPi),
                     height / 2 + radius * Math.sin(step + logoPerTPi));
-            clientClusterNode.setPosition(goal.getX(), goal.getY());
+            node.setPosition(goal.getX(), goal.getY());
         }
     }
 
@@ -84,10 +85,10 @@ public class Cluster {
         context.closePath();
 */
         for (int i = numNodes - 1; i >= 0; i--) {
-            ClientClusterNode clientClusterNode = clientClusterNodes.get(i);
+            Node node = nodes.get(i);
             context.save();
             context.beginPath();
-            context.translate(clientClusterNode.getPosition().getX(), clientClusterNode.getPosition().getY());
+            context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
             context.setFillStyle(CssColor.make("blue"));
             context.fillText("192.168.0.100:5555", 0, 80);
@@ -97,4 +98,27 @@ public class Cluster {
 
     }
 
+    class Node {
+
+        private Vector position = new Vector(0, 0);
+
+        private ClusterNodeInfo clusterNodeInfo;
+
+        public Node(ClusterNodeInfo clusterNodeInfo) {
+            this.clusterNodeInfo = clusterNodeInfo;
+        }
+
+        public void setPosition(double x, double y) {
+            this.position.set(x, y);
+        }
+
+        public Vector getPosition() {
+            return position;
+        }
+
+        public ClusterNodeInfo getClusterNodeInfo() {
+            return clusterNodeInfo;
+        }
+
+    }
 }

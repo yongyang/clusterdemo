@@ -114,17 +114,25 @@ public class ClusterDemo implements EntryPoint {
 
         cluster = new Cluster(width-60, height-60, 6, 250);
 
-        final Timer timer = new Timer() {
+        final Timer redrawTimer = new Timer() {
             @Override
             public void run() {
                 redraw();
             }
         };
-        timer.scheduleRepeating(refreshRate);
+        redrawTimer.scheduleRepeating(refreshRate);
+
+        final Timer updateClusterInfoTimer = new Timer() {
+            @Override
+            public void run() {
+                updateClusterInfo();
+            }
+        };
+        updateClusterInfoTimer.scheduleRepeating(refreshRate * 40);
 
     }
 
-    void redraw() {
+    private void redraw() {
 
         // reset bufferContext2d
         bufferContext2d.setFillStyle(REDRAW_COLOR);
@@ -137,6 +145,18 @@ public class ClusterDemo implements EntryPoint {
         // draw bufferContext2d to front
         context2d.drawImage(bufferContext2d.getCanvas(), 0 ,0);
 
+    }
+
+    private void updateClusterInfo() {
+        managementService.getClusterInfo("", new AsyncCallback<String>() {
+            public void onFailure(Throwable caught) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            public void onSuccess(String result) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
     }
 
 }
