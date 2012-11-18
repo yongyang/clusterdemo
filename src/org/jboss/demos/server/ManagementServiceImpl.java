@@ -29,8 +29,8 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
 
       StringBuffer sb = new StringBuffer();
       for(Address address : members){
-          IpAddress physicalAddr = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
-          sb.append(physicalAddr.getClass().getName()).append(": ").append(physicalAddr.getIpAddress().getHostAddress()).append(":").append(physicalAddr.getPort()).append("\n");
+          IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
+          sb.append(ipAddress.getClass().getName()).append(": ").append(ipAddress.getIpAddress().getHostAddress()).append(":").append(ipAddress.getPort()).append("\n");
       }
 
       return sb.toString();
