@@ -25,7 +25,7 @@ public class ClusterDemo implements EntryPoint {
     Canvas bufferCanvas;
     Context2d bufferContext2d;
 
-    Cluster cluster;
+    NodeGroup nodeGroup;
     // mouse positions relative to canvas
     int mouseX, mouseY;
     //timer refresh rate, in milliseconds
@@ -112,7 +112,7 @@ public class ClusterDemo implements EntryPoint {
         context2d = canvas.getContext2d();
         bufferContext2d = bufferCanvas.getContext2d();
 
-        cluster = new Cluster(width-60, height-60, 6, 250);
+        nodeGroup = new NodeGroup(width-60, height-60, 6, 250);
 
         final Timer redrawTimer = new Timer() {
             @Override
@@ -139,8 +139,8 @@ public class ClusterDemo implements EntryPoint {
         bufferContext2d.fillRect(0, 0, width, height);
 
         // draw image to bufferContext2d
-        cluster.update(0, 0);
-        cluster.draw(bufferContext2d);
+        nodeGroup.update(0, 0);
+        nodeGroup.draw(bufferContext2d);
 
         // draw bufferContext2d to front
         context2d.drawImage(bufferContext2d.getCanvas(), 0 ,0);

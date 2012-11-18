@@ -16,7 +16,7 @@ import java.util.List;
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
  * @create 11/12/12 10:32 AM
  */
-public class Cluster {
+public class NodeGroup {
 
     final double width;
     final double height;
@@ -29,7 +29,7 @@ public class Cluster {
 
     double step;
 
-    public Cluster(double width, double height, int numNodes, double radius) {
+    public NodeGroup(double width, double height, int numNodes, double radius) {
         this.width = width;
         this.height = height;
         this.numNodes = numNodes;
@@ -45,9 +45,9 @@ public class Cluster {
                 imageLoaded = true;
                 // once image is loaded, init logo objects
                 ImageElement imageElement = (ImageElement) nodeImg.getElement().cast();
-                for (int i = Cluster.this.numNodes - 1; i >= 0; i--) {
+                for (int i = NodeGroup.this.numNodes - 1; i >= 0; i--) {
                     Node node = new Node(null);
-                    node.setPosition(Cluster.this.width / 2, Cluster.this.height / 2);
+                    node.setPosition(NodeGroup.this.width / 2, NodeGroup.this.height / 2);
                     nodes.add(node);
                 }
             }
