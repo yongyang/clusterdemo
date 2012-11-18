@@ -7,7 +7,7 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
-import org.jboss.demos.shared.ClusterNodeInfo;
+import org.jboss.demos.shared.ClusterNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,10 +102,10 @@ public class NodeGroup {
 
         private Vector position = new Vector(0, 0);
 
-        private ClusterNodeInfo clusterNodeInfo;
+        private ClusterNode clusterNode;
 
-        public Node(ClusterNodeInfo clusterNodeInfo) {
-            this.clusterNodeInfo = clusterNodeInfo;
+        public Node(ClusterNode clusterNode) {
+            this.clusterNode = clusterNode;
         }
 
         public void setPosition(double x, double y) {
@@ -116,8 +116,8 @@ public class NodeGroup {
             return position;
         }
 
-        public ClusterNodeInfo getClusterNodeInfo() {
-            return clusterNodeInfo;
+        public ClusterNode getClusterNode() {
+            return clusterNode;
         }
 
     }

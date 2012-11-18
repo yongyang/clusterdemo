@@ -6,11 +6,11 @@ import java.io.Serializable;
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
  * @create 11/15/12 8:54 AM
  */
-public class ClusterNodeInfo implements Serializable{
+public class ClusterNode implements Serializable{
     private String ip;
     private String port;
 
-    public ClusterNodeInfo(String ip, String port) {
+    public ClusterNode(String ip, String port) {
         this.ip = ip;
         this.port = port;
     }
