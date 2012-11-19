@@ -131,9 +131,9 @@ public class NodeGroup {
 
         for(Iterator<Node> it = nodes.iterator(); it.hasNext(); ){
             Node node = it.next();
-            // remove ones can be removed now
+            //TODO: remove ones can be removed now
             if(node.isTimeToRemove()) {
-                nodesMap.get(node.getIdentity());
+                nodesMap.remove(node.getIdentity());
             }
 
         }
@@ -144,13 +144,15 @@ public class NodeGroup {
             }
         });
         int numNodes = nodes.size();
+
+        //TODO: re-calculate position when remove and new
         for (int i = numNodes - 1; i >= 0; i--) {
             Node node = nodes.get(i);
 
             // update position
-            double logoPerTPi = 2 * Math.PI * i / numNodes;
-            Vector goal = new Vector(width / 2 + radius * Math.cos(step + logoPerTPi),
-                    height / 2 + radius * Math.sin(step + logoPerTPi));
+            double perPI = 2 * Math.PI * i / numNodes;
+            Vector goal = new Vector(width / 2 + radius * Math.cos(step + perPI),
+                    height / 2 + radius * Math.sin(step + perPI));
             node.setPosition(goal.getX(), goal.getY());
         }
 
