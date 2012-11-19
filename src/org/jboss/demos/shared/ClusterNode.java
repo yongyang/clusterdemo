@@ -10,8 +10,15 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>{
     private String ip;
     private int port;
 
-    public ClusterNode(String ip, int port) {
+    public ClusterNode() {
+
+    }
+
+    public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public void setPort(int port) {
         this.port = port;
     }
 

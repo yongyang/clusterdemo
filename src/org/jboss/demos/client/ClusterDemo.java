@@ -13,6 +13,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import org.jboss.demos.shared.ClusterNode;
 
 import java.util.List;
@@ -70,36 +71,22 @@ public class ClusterDemo implements EntryPoint {
   }
 
     private void addButtons() {
-        Button sendButton = new Button("Send", new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                managementService.getClusterInfo("", new AsyncCallback<List<ClusterNode>>() {
-                    public void onFailure(Throwable caught) {
-                        //To change body of implemented methods use File | Settings | File Templates.
-                    }
-
-                    public void onSuccess(List<ClusterNode> result) {
-                        //To change body of implemented methods use File | Settings | File Templates.
-                    }
-                });
-
-            }
-        });
-
-        Button addButton = new Button("Add", new ClickHandler() {
+        Button reloadButton = new Button("Reload", new ClickHandler() {
             public void onClick(ClickEvent event) {
                 Window.alert("Test Management API");
             }
         });
 
-        Button removeButton = new Button("Remove", new ClickHandler() {
+        Button shutdownButton = new Button("Shutdown", new ClickHandler() {
             public void onClick(ClickEvent event) {
                 Window.alert("Test Management API");
             }
         });
 
-        RootPanel.get("cluster-buttons").add(sendButton);
-        RootPanel.get("cluster-buttons").add(addButton);
-        RootPanel.get("cluster-buttons").add(removeButton);
+        TextBox textBox = new TextBox();
+        RootPanel.get("cluster-operations").add(textBox);
+        RootPanel.get("cluster-operations").add(reloadButton);
+        RootPanel.get("cluster-operations").add(shutdownButton);
 
     }
 
@@ -132,6 +119,7 @@ public class ClusterDemo implements EntryPoint {
             }
         };
         updateClusterInfoTimer.scheduleRepeating(refreshRate * 40);
+//        updateClusterInfoTimer.schedule(refreshRate * 40);
 
     }
 

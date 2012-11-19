@@ -168,7 +168,7 @@ public class NodeGroup {
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
             context.setFillStyle(CssColor.make("blue"));
-            context.fillText("192.168.0.100:5555", 0, 80);
+            context.fillText(node.getIdentity(), 0, 80);
             context.closePath();
 
             //TODO: if to remove

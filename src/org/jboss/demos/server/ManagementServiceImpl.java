@@ -21,19 +21,33 @@ import java.util.List;
 public class ManagementServiceImpl extends RemoteServiceServlet implements
                                                               ManagementService {
 
-  public List<ClusterNode> getClusterInfo(String input) {
+/*
+    public List<ClusterNode> getClusterInfo(String input) {
 
-      JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
-      List<Address> members = channel.getView().getMembers();
+        JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
+        List<Address> members = channel.getView().getMembers();
 
-      List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>(members.size());
-      for(Address address : members){
-          IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
-          ClusterNode node = new ClusterNode(ipAddress.getIpAddress().getHostAddress(), ipAddress.getPort());
-          clusterNodes.add(node);
-      }
+        List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>(members.size());
+        for(Address address : members){
+            IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
+            ClusterNode node = new ClusterNode(ipAddress.getIpAddress().getHostAddress(), ipAddress.getPort());
+            clusterNodes.add(node);
+        }
 
-      return clusterNodes;
+        return clusterNodes;
+    }
+*/
 
-  }
+    public List<ClusterNode> getClusterInfo(String input) {
+
+        List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>();
+        for(int i=0; i<5; i++){
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(9000 + i);
+            clusterNodes.add(node);
+        }
+        return clusterNodes;
+    }
+
 }
