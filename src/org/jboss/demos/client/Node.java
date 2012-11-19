@@ -15,7 +15,7 @@ class Node {
     // 2s
     private long lastForStatusChange = 2000;
     private boolean isNew = true;
-    private boolean isStopped = false;
+    private boolean isRemoved = false;
 
     public Node(ClusterNode clusterNode) {
         this.clusterNode = clusterNode;
@@ -37,12 +37,20 @@ class Node {
         // new ???
     }
 
-    public void setStopped() {
-        isStopped = true;
+    public void setRemoved() {
+        isRemoved = true;
     }
 
-    public boolean isStopped() {
-        return isStopped;
+    public boolean isRemoved() {
+        return isRemoved;
+    }
+
+    public boolean isNew(){
+        return isNew;
+    }
+
+    public String getIdentity() {
+        return clusterNode.getIdentity();
     }
 
 }

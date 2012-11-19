@@ -115,7 +115,7 @@ public class ClusterDemo implements EntryPoint {
         context2d = canvas.getContext2d();
         bufferContext2d = bufferCanvas.getContext2d();
 
-        nodeGroup = new NodeGroup(width-60, height-60, 6, 250);
+        nodeGroup = new NodeGroup(width-60, height-60, 250);
 
         final Timer redrawTimer = new Timer() {
             @Override
@@ -142,7 +142,6 @@ public class ClusterDemo implements EntryPoint {
         bufferContext2d.fillRect(0, 0, width, height);
 
         // draw image to bufferContext2d
-        nodeGroup.update(0, 0);
         nodeGroup.draw(bufferContext2d);
 
         // draw bufferContext2d to front
@@ -153,11 +152,11 @@ public class ClusterDemo implements EntryPoint {
     private void updateClusterInfo() {
         managementService.getClusterInfo("", new AsyncCallback<List<ClusterNode>>() {
             public void onFailure(Throwable caught) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                GWT.log("faile to get cluster info");
             }
 
             public void onSuccess(List<ClusterNode> result) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                nodeGroup.updateClusterInfo(result);
             }
         });
     }
