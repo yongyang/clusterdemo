@@ -44,6 +44,7 @@ class Node {
         removeStart = System.currentTimeMillis();
     }
 
+    //TODO: if reload, it's to fast for removeing and newing to show on UI ????
     public boolean isRemoving() {
         return System.currentTimeMillis() - removeStart  < lastForStatusChange;
     }

@@ -173,12 +173,17 @@ public class NodeGroup {
 
             //TODO: if to remove
             if(node.isRemoving()) {
-                // blink
+                //TODO: blink read
             }
 
             //TODO: is New
             if(node.isNewing()) {
-                // blink
+                //TODO: blink green
+
+                if(node.isRemoving()) {
+                    //TODO: restarting!!! blink yellow
+                }
+
             }
 
             context.restore();
