@@ -6,12 +6,19 @@ import java.io.Serializable;
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
  * @create 11/15/12 8:54 AM
  */
-public class ClusterNode implements Serializable{
+public class ClusterNode implements Serializable, Comparable<ClusterNode>{
     private String ip;
-    private String port;
+    private int port;
 
-    public ClusterNode(String ip, String port) {
+    public ClusterNode() {
+
+    }
+
+    public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public void setPort(int port) {
         this.port = port;
     }
 
@@ -19,12 +26,21 @@ public class ClusterNode implements Serializable{
         return ip;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
+    }
+
+    public String getIdentity() {
+        return ip + ":" +port;
     }
 
     @Override
     public String toString() {
-        return ip + ":" +port;
+        return "ClusterNode{ip=" + ip + ", port=" + port + "}";
+    }
+
+    public int compareTo(ClusterNode other) {
+        if(other == null) return 0;
+        return this.getIdentity().compareTo(other.getIdentity());
     }
 }

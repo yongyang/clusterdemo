@@ -13,6 +13,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
+import org.jboss.demos.shared.ClusterNode;
+
+import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -67,36 +71,22 @@ public class ClusterDemo implements EntryPoint {
   }
 
     private void addButtons() {
-        Button sendButton = new Button("Send", new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                managementService.getClusterInfo("", new AsyncCallback<String>() {
-                    public void onFailure(Throwable caught) {
-                        Window.alert("getClusterInfo fail!" + caught.toString());
-                    }
-
-                    public void onSuccess(String result) {
-                        Window.alert("getClusterInfo success! \n" + result);
-                    }
-                });
-
-            }
-        });
-
-        Button addButton = new Button("Add", new ClickHandler() {
+        Button reloadButton = new Button("Reload", new ClickHandler() {
             public void onClick(ClickEvent event) {
                 Window.alert("Test Management API");
             }
         });
 
-        Button removeButton = new Button("Remove", new ClickHandler() {
+        Button shutdownButton = new Button("Shutdown", new ClickHandler() {
             public void onClick(ClickEvent event) {
                 Window.alert("Test Management API");
             }
         });
 
-        RootPanel.get("cluster-buttons").add(sendButton);
-        RootPanel.get("cluster-buttons").add(addButton);
-        RootPanel.get("cluster-buttons").add(removeButton);
+        TextBox textBox = new TextBox();
+        RootPanel.get("cluster-operations").add(textBox);
+        RootPanel.get("cluster-operations").add(reloadButton);
+        RootPanel.get("cluster-operations").add(shutdownButton);
 
     }
 
@@ -112,7 +102,7 @@ public class ClusterDemo implements EntryPoint {
         context2d = canvas.getContext2d();
         bufferContext2d = bufferCanvas.getContext2d();
 
-        nodeGroup = new NodeGroup(width-60, height-60, 6, 250);
+        nodeGroup = new NodeGroup(width-60, height-60, 250);
 
         final Timer redrawTimer = new Timer() {
             @Override
@@ -129,6 +119,7 @@ public class ClusterDemo implements EntryPoint {
             }
         };
         updateClusterInfoTimer.scheduleRepeating(refreshRate * 40);
+//        updateClusterInfoTimer.schedule(refreshRate * 40);
 
     }
 
@@ -139,22 +130,21 @@ public class ClusterDemo implements EntryPoint {
         bufferContext2d.fillRect(0, 0, width, height);
 
         // draw image to bufferContext2d
-        nodeGroup.update(0, 0);
         nodeGroup.draw(bufferContext2d);
 
         // draw bufferContext2d to front
-        context2d.drawImage(bufferContext2d.getCanvas(), 0 ,0);
+        context2d.drawImage(bufferContext2d.getCanvas(), 0, 0);
 
     }
 
     private void updateClusterInfo() {
-        managementService.getClusterInfo("", new AsyncCallback<String>() {
+        managementService.getClusterInfo("", new AsyncCallback<List<ClusterNode>>() {
             public void onFailure(Throwable caught) {
-                //To change body of implemented methods use File | Settings | File Templates.
+                GWT.log("faile to get cluster info");
             }
 
-            public void onSuccess(String result) {
-                //To change body of implemented methods use File | Settings | File Templates.
+            public void onSuccess(List<ClusterNode> result) {
+                nodeGroup.updateClusterInfo(result);
             }
         });
     }

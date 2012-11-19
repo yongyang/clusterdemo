@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list id="696b731a-4c2d-4eef-8dcd-e6079dbf87c0" name="Default" comment="Add AS7ClusterView" />
     <list default="true" id="9d13dc51-4026-430b-9a9a-4a312702631e" name="no IDEA files" comment="no IDEA files">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClusterDemo.iml" afterPath="$PROJECT_DIR$/ClusterDemo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterdemo.ipr" afterPath="$PROJECT_DIR$/clusterdemo.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterdemo.iws" afterPath="$PROJECT_DIR$/clusterdemo.iws" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java" afterPath="$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/ClusterDemo.html" afterPath="$PROJECT_DIR$/war/ClusterDemo.html" />
     </list>
     <ignored path="clusterdemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,12 +87,12 @@
       <file leaf-file-name="ClusterDemo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="63" selection-start="3906" selection-end="3906" vertical-scroll-proportion="0.0">
+            <state line="104" column="60" selection-start="3502" selection-end="3502" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#3942#4059#0" expanded="true" />
-                <element signature="e#4048#4049#0" expanded="true" />
-                <element signature="e#4159#4287#0" expanded="true" />
-                <element signature="e#4276#4277#0" expanded="true" />
+                <element signature="e#3538#3655#0" expanded="true" />
+                <element signature="e#3644#3645#0" expanded="true" />
+                <element signature="e#3755#3883#0" expanded="true" />
+                <element signature="e#3872#3873#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,10 +101,20 @@
       <file leaf-file-name="ManagementServiceImpl.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.88372093">
+            <state line="23" column="0" selection-start="752" selection-end="752" vertical-scroll-proportion="0.37388194">
               <folding>
-                <element signature="e#561#588#0" expanded="true" />
+                <element signature="e#566#593#0" expanded="true" />
+                <element signature="e#1609#1622#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClusterDemo.iml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClusterDemo.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="19" selection-start="3115" selection-end="3115" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,7 +133,7 @@
       <file leaf-file-name="ClusterNode.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+            <state line="46" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,7 +151,7 @@
       <file leaf-file-name="ManagementServiceAsync.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="9" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
+            <state line="12" column="9" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -144,7 +160,7 @@
       <file leaf-file-name="ManagementService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
+            <state line="16" column="0" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -153,8 +169,11 @@
       <file leaf-file-name="NodeGroup.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="20" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="49" column="20" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1361#1933#0" expanded="true" />
+                <element signature="e#1922#1923#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -199,6 +218,7 @@
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/Cluster.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ClusterDemo.iml" />
       </list>
     </option>
   </component>
@@ -532,7 +552,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="764" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -552,7 +572,7 @@
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22933549" sideWeight="0.7792642" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22933549" sideWeight="0.7792642" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22073579" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -586,7 +606,7 @@
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
-    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="true" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
     <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
@@ -656,7 +676,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0" />
+        <state line="16" column="0" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
@@ -686,7 +708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="9" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
+        <state line="12" column="9" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -709,35 +731,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="63" selection-start="3906" selection-end="3906" vertical-scroll-proportion="0.0">
+        <state line="104" column="60" selection-start="3502" selection-end="3502" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#3942#4059#0" expanded="true" />
-            <element signature="e#4048#4049#0" expanded="true" />
-            <element signature="e#4159#4287#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#3538#3655#0" expanded="true" />
+            <element signature="e#3644#3645#0" expanded="true" />
+            <element signature="e#3755#3883#0" expanded="true" />
+            <element signature="e#3872#3873#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="20" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="49" column="20" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1361#1933#0" expanded="true" />
+            <element signature="e#1922#1923#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0">
+        <state line="46" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClusterDemo.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="19" selection-start="3115" selection-end="3115" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.88372093">
+        <state line="23" column="0" selection-start="752" selection-end="752" vertical-scroll-proportion="0.37388194">
           <folding>
-            <element signature="e#561#588#0" expanded="true" />
+            <element signature="e#566#593#0" expanded="true" />
+            <element signature="e#1609#1622#0" expanded="true" />
           </folding>
         </state>
       </provider>

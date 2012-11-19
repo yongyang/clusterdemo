@@ -1,10 +1,13 @@
 package org.jboss.demos.client;
 
+import org.jboss.demos.shared.ClusterNode;
 import org.jboss.demos.shared.FieldVerifier;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+
+import java.util.List;
 
 /**
  * GWT JUnit tests must extend GWTTestCase.
@@ -46,20 +49,13 @@ public class ClusterDemoTest extends GWTTestCase {
     delayTestFinish(10000);
 
     // Send a request to the server.
-    greetingService.getClusterInfo("GWT User", new AsyncCallback<String>() {
+    greetingService.getClusterInfo("GWT User", new AsyncCallback<List<ClusterNode>>() {
         public void onFailure(Throwable caught) {
-            // The request resulted in an unexpected error.
-            fail("Request failure: " + caught.getMessage());
+            //To change body of implemented methods use File | Settings | File Templates.
         }
 
-        public void onSuccess(String result) {
-            // Verify that the response is correct.
-            assertTrue(result.startsWith("Hello, GWT User!"));
-
-            // Now that we have received a response, we need to tell the test runner
-            // that the test is complete. You must call finishTest() after an
-            // asynchronous test finishes successfully, or the test will time out.
-            finishTest();
+        public void onSuccess(List<ClusterNode> result) {
+            //To change body of implemented methods use File | Settings | File Templates.
         }
     });
   }

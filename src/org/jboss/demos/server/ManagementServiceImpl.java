@@ -1,18 +1,17 @@
 package org.jboss.demos.server;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.jboss.as.server.CurrentServiceContainer;
 import org.jboss.demos.client.ManagementService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.jboss.demos.shared.ClusterNode;
 import org.jboss.msc.service.ServiceName;
 import org.jgroups.Address;
-import org.jgroups.Channel;
 import org.jgroups.Event;
 import org.jgroups.JChannel;
-import org.jgroups.PhysicalAddress;
 import org.jgroups.stack.IpAddress;
-import org.jgroups.util.UUID;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,18 +21,34 @@ import java.util.List;
 public class ManagementServiceImpl extends RemoteServiceServlet implements
                                                               ManagementService {
 
-  public String getClusterInfo(String input) {
+/*
+    public List<ClusterNode> getClusterInfo(String input) {
 
-      JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
-      List<Address> members = channel.getView().getMembers();
+        JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
+        List<Address> members = channel.getView().getMembers();
 
-      StringBuffer sb = new StringBuffer();
-      for(Address address : members){
-          IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
-          sb.append(ipAddress.getClass().getName()).append(": ").append(ipAddress.getIpAddress().getHostAddress()).append(":").append(ipAddress.getPort()).append("\n");
-      }
+        List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>(members.size());
+        for(Address address : members){
+            IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
+            ClusterNode node = new ClusterNode(ipAddress.getIpAddress().getHostAddress(), ipAddress.getPort());
+            clusterNodes.add(node);
+        }
 
-      return sb.toString();
+        return clusterNodes;
+    }
+*/
 
-  }
+    // for mock test
+    public List<ClusterNode> getClusterInfo(String input) {
+
+        List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>();
+        for(int i=0; i<5; i++){
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(9000 + i);
+            clusterNodes.add(node);
+        }
+        return clusterNodes;
+    }
+
 }
