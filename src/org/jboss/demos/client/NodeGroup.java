@@ -171,6 +171,8 @@ public class NodeGroup {
             context.fillText(node.getIdentity(), 0, 80);
             context.closePath();
 
+            //TODO: How to blink
+
             //TODO: if to remove
             if(node.isRemoving()) {
                 //TODO: blink read
