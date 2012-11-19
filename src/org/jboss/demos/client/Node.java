@@ -2,6 +2,8 @@ package org.jboss.demos.client;
 
 import org.jboss.demos.shared.ClusterNode;
 
+import java.sql.Time;
+
 /**
 * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
 * @create 11/19/12 8:22 AM
@@ -14,11 +16,12 @@ class Node {
 
     // 2s
     private long lastForStatusChange = 2000;
-    private boolean isNew = true;
-    private boolean isRemoved = false;
+    private long newStart = 0;
+    private long removeStart = 0;
 
     public Node(ClusterNode clusterNode) {
         this.clusterNode = clusterNode;
+        this.newStart = System.currentTimeMillis();
     }
 
     public void setPosition(double x, double y) {
@@ -38,15 +41,23 @@ class Node {
     }
 
     public void setRemoved() {
-        isRemoved = true;
+        removeStart = System.currentTimeMillis();
     }
 
-    public boolean isRemoved() {
-        return isRemoved;
+    public boolean isRemoving() {
+        return System.currentTimeMillis() - removeStart  < lastForStatusChange;
     }
 
-    public boolean isNew(){
-        return isNew;
+    public boolean isNewing(){
+        return  System.currentTimeMillis() - newStart  < lastForStatusChange;
+    }
+
+    public boolean isTimeToRemove(){
+        return removeStart !=0 && System.currentTimeMillis() - removeStart  > lastForStatusChange;
+    }
+
+    public boolean hasNewed(){
+        return newStart !=0 && System.currentTimeMillis() - newStart  > lastForStatusChange;
     }
 
     public String getIdentity() {

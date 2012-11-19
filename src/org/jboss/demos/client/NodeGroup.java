@@ -11,10 +11,10 @@ import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.demos.shared.ClusterNode;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -127,6 +127,17 @@ public class NodeGroup {
 
 
         List<Node> nodes = new ArrayList<Node>(nodesMap.values());
+
+
+        for(Iterator<Node> it = nodes.iterator(); it.hasNext(); ){
+            Node node = it.next();
+            // remove ones can be removed now
+            if(node.isTimeToRemove()) {
+                nodesMap.get(node.getIdentity());
+            }
+
+        }
+
         Collections.sort(nodes, new Comparator<Node>() {
             public int compare(Node o1, Node o2) {
                 return o1.getIdentity().compareTo(o2.getIdentity());
@@ -135,6 +146,8 @@ public class NodeGroup {
         int numNodes = nodes.size();
         for (int i = numNodes - 1; i >= 0; i--) {
             Node node = nodes.get(i);
+
+            // update position
             double logoPerTPi = 2 * Math.PI * i / numNodes;
             Vector goal = new Vector(width / 2 + radius * Math.cos(step + logoPerTPi),
                     height / 2 + radius * Math.sin(step + logoPerTPi));
@@ -159,12 +172,12 @@ public class NodeGroup {
             context.closePath();
 
             //TODO: if to remove
-            if(node.isRemoved()) {
+            if(node.isRemoving()) {
                 // blink
             }
 
             //TODO: is New
-            if(node.isNew()) {
+            if(node.isNewing()) {
                 // blink
             }
 
