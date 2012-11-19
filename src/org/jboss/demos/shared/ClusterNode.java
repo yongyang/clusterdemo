@@ -8,9 +8,9 @@ import java.io.Serializable;
  */
 public class ClusterNode implements Serializable{
     private String ip;
-    private String port;
+    private int port;
 
-    public ClusterNode(String ip, String port) {
+    public ClusterNode(String ip, int port) {
         this.ip = ip;
         this.port = port;
     }
@@ -19,7 +19,7 @@ public class ClusterNode implements Serializable{
         return ip;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 

@@ -13,6 +13,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import org.jboss.demos.shared.ClusterNode;
+
+import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -69,13 +72,13 @@ public class ClusterDemo implements EntryPoint {
     private void addButtons() {
         Button sendButton = new Button("Send", new ClickHandler() {
             public void onClick(ClickEvent event) {
-                managementService.getClusterInfo("", new AsyncCallback<String>() {
+                managementService.getClusterInfo("", new AsyncCallback<List<ClusterNode>>() {
                     public void onFailure(Throwable caught) {
-                        Window.alert("getClusterInfo fail!" + caught.toString());
+                        //To change body of implemented methods use File | Settings | File Templates.
                     }
 
-                    public void onSuccess(String result) {
-                        Window.alert("getClusterInfo success! \n" + result);
+                    public void onSuccess(List<ClusterNode> result) {
+                        //To change body of implemented methods use File | Settings | File Templates.
                     }
                 });
 
@@ -143,17 +146,17 @@ public class ClusterDemo implements EntryPoint {
         nodeGroup.draw(bufferContext2d);
 
         // draw bufferContext2d to front
-        context2d.drawImage(bufferContext2d.getCanvas(), 0 ,0);
+        context2d.drawImage(bufferContext2d.getCanvas(), 0, 0);
 
     }
 
     private void updateClusterInfo() {
-        managementService.getClusterInfo("", new AsyncCallback<String>() {
+        managementService.getClusterInfo("", new AsyncCallback<List<ClusterNode>>() {
             public void onFailure(Throwable caught) {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
 
-            public void onSuccess(String result) {
+            public void onSuccess(List<ClusterNode> result) {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
         });
