@@ -38,6 +38,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
     }
 */
 
+    // for mock test
     public List<ClusterNode> getClusterInfo(String input) {
 
         List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>();
