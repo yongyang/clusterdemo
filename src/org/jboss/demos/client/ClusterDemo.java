@@ -3,6 +3,17 @@ package org.jboss.demos.client;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.CssColor;
+import com.google.gwt.dom.client.Touch;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.core.client.EntryPoint;
@@ -102,6 +113,46 @@ public class ClusterDemo implements EntryPoint {
         context2d = canvas.getContext2d();
         bufferContext2d = bufferCanvas.getContext2d();
 
+        canvas.addMouseMoveHandler(new MouseMoveHandler() {
+            public void onMouseMove(MouseMoveEvent event) {
+                mouseX = event.getRelativeX(canvas.getElement());
+                mouseY = event.getRelativeY(canvas.getElement());
+            }
+        });
+
+        canvas.addMouseOutHandler(new MouseOutHandler() {
+            public void onMouseOut(MouseOutEvent event) {
+                mouseX = -200;
+                mouseY = -200;
+            }
+        });
+
+        canvas.addTouchMoveHandler(new TouchMoveHandler() {
+            public void onTouchMove(TouchMoveEvent event) {
+                event.preventDefault();
+                if (event.getTouches().length() > 0) {
+                    Touch touch = event.getTouches().get(0);
+                    mouseX = touch.getRelativeX(canvas.getElement());
+                    mouseY = touch.getRelativeY(canvas.getElement());
+                }
+                event.preventDefault();
+            }
+        });
+
+        canvas.addTouchEndHandler(new TouchEndHandler() {
+            public void onTouchEnd(TouchEndEvent event) {
+                event.preventDefault();
+                mouseX = -200;
+                mouseY = -200;
+            }
+        });
+
+        canvas.addMouseDownHandler(new MouseDownHandler() {
+            public void onMouseDown(MouseDownEvent event) {
+                //TODO: select cluster node, show it on cluster-operations text-box
+            }
+        });
+
         nodeGroup = new NodeGroup(width-60, height-60, 250);
 
         final Timer redrawTimer = new Timer() {
@@ -133,7 +184,7 @@ public class ClusterDemo implements EntryPoint {
         nodeGroup.draw(bufferContext2d);
 
         // draw bufferContext2d to front
-        context2d.drawImage(bufferContext2d.getCanvas(), 0, 0);
+        context2d.drawImage(bufferContext2d.getCanvas(), mouseX, mouseY);
 
     }
 

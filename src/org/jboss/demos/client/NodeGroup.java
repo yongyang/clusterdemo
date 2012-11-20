@@ -171,16 +171,18 @@ public class NodeGroup {
             context.fillText(node.getIdentity(), 0, 80);
             context.closePath();
 
+            //TODO: onMouseOver, shadow
+
             //TODO: How to blink
 
             //TODO: if to remove
             if(node.isRemoving()) {
-                //TODO: blink read
+                //TODO: //TODO: blink green or scale out
             }
 
             //TODO: is New
             if(node.isNewing()) {
-                //TODO: blink green
+                //TODO: blink green or scale in
 
                 if(node.isRemoving()) {
                     //TODO: restarting!!! blink yellow
