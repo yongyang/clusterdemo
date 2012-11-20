@@ -10,19 +10,15 @@
         <element id="gwt-compiler-output" facet="ClusterDemo/gwt/GWT" />
       </root>
     </artifact>
-    <artifact type="war" name="ClusterDemo:Web exploded">
+    <artifact type="exploded-war" name="ClusterDemo:Web exploded">
       <output-path>$PROJECT_DIR$/out/artifacts/ClusterDemo_Web_exploded</output-path>
-      <root id="archive" name="clusterdemo.war">
+      <root id="root">
         <element id="javaee-facet-resources" facet="ClusterDemo/web/Web" />
         <element id="directory" name="WEB-INF">
           <element id="directory" name="classes">
             <element id="module-output" name="ClusterDemo" />
           </element>
-          <element id="directory" name="lib">
-            <element id="library" level="project" name="gwt-servlet" />
-          </element>
         </element>
-        <element id="gwt-compiler-output" facet="ClusterDemo/gwt/GWT" />
       </root>
     </artifact>
   </component>
@@ -88,44 +84,12 @@
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/Base64.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/BigDecimalModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/BigIntegerModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/BooleanModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/Bootstrap.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/BytesModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/DataInput.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/DataOutput.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/DispatchResult.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/Dispatcher.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/Dmr_gwt.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/DoubleModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ExpressionValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/GreetingService.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/GreetingServiceAsync.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/IEEE754.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/IntModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ListModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/LongModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ModelDescriptionConstants.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ModelNode.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ModelNodeUtil.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ModelType.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ObjectModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/Property.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/PropertyModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/StringModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/TypeModelValue.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/Validation.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/org/jboss/dmr/DMR.gwt.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/test/org/jboss/dmr/Base64Test.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/test/org/jboss/dmr/DispatchAPITest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/test/org/jboss/dmr/SimpleDispatcher.java" charset="UTF-8" />
-  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
+  </component>
+  <component name="GradleSettings">
+    <option name="gradleHome" value="E:/Java/Gradle/gradle-1.0-rc-3" />
   </component>
   <component name="IdProvider" IDEtalkID="258493736A93AF330B2055347FC2D702" />
   <component name="JavadocGenerationManager">
@@ -277,7 +241,7 @@
           <configuration>
             <setting name="compilerMaxHeapSize" value="512" />
             <setting name="gwtScriptOutputStyle" value="PRETTY" />
-            <setting name="gwtSdkUrl" value="file://$PROJECT_DIR$/../../GWT/gwt-2.5.0" />
+            <setting name="gwtSdkUrl" value="file://D:/GWT/gwt-2.5.0" />
           </configuration>
         </default-facet-configuration>
       </entry>
@@ -394,80 +358,69 @@
   <component name="libraryTable">
     <library name="gwt-2..5.0">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-dev.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet-deps.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-api-checker.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-benchmark-viewer.war!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-codeserver.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-dev.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-elemental.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-servlet-deps.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-servlet.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-user.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-apt.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-client+src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-client.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-server+src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-server.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/validation-api-1.0.0.GA.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-codeserver.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-dev.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-elemental.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-apt-src.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-client+src.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-client-src.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-server+src.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/requestfactory-server-src.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-codeserver.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-dev.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-elemental.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-servlet.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/gwt-user.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-apt-src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-client+src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-client-src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-server+src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/requestfactory-server-src.jar!/" />
+        <root url="jar://E:/Java/GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
       </SOURCES>
-    </library>
-    <library name="gwt-servlet">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet-deps.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="httpcore-4.2.2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/httpcore-4.2.2.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/httpmime-4.2.2.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/commons-logging-1.1.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/fluent-hc-4.2.2.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/httpclient-cache-4.2.2.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/commons-codec-1.6.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../jars/httpcomponents-client-4.2.2/lib/httpclient-4.2.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
     </library>
     <library name="jboss-as-server-7.1.1.Final">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../jboss-as-7.1.1.Final/modules/org/jboss/as/server/main/jboss-as-server-7.1.1.Final.jar!/" />
+        <root url="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jboss/as/server/main/jboss-as-server-7.1.1.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
     <library name="jboss-client">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../jboss-as-7.1.1.Final/bin/client/jboss-client.jar!/" />
+        <root url="jar://E:/jboss/jboss-as-7.1.1.Final/bin/client/jboss-client.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
     <library name="jboss-msc-1.0.2.GA">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../jboss-as-7.1.1.Final/modules/org/jboss/msc/main/jboss-msc-1.0.2.GA.jar!/" />
+        <root url="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jboss/msc/main/jboss-msc-1.0.2.GA.jar!/" />
+        <root url="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jboss/as/controller-client/main/jboss-as-controller-client-7.1.1.Final.jar!/" />
+        <root url="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jboss/as/clustering/service/main/jboss-as-clustering-service-7.1.1.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
     <library name="jgroups-3.0.6.Final">
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/../../jboss-as-7.1.1.Final/modules/org/jgroups/main/jgroups-3.0.6.Final.jar!/" />
+        <root url="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jgroups/main/jgroups-3.0.6.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="junit4">
+    <library name="junit-4.11">
       <CLASSES>
-        <root url="jar:///usr/share/java/junit4.jar!/" />
+        <root url="jar://E:/Java/junit/junit-4.11.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

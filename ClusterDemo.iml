@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="EclipseModuleManager">
-    <libelement value="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/" />
-    <libelement value="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/gwt-dev.jar!/" />
-    <libelement value="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA.jar!/" />
-    <libelement value="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
+    <libelement value="jar://D:/GWT/gwt-2.5.0/gwt-user.jar!/" />
+    <libelement value="jar://D:/GWT/gwt-2.5.0/gwt-dev.jar!/" />
+    <libelement value="jar://D:/GWT/gwt-2.5.0/validation-api-1.0.0.GA.jar!/" />
+    <libelement value="jar://D:/GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
     <src_description expected_position="0">
       <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
       <src_folder value="file://$MODULE_DIR$/test" expected_position="1" />
@@ -15,7 +15,7 @@
       <configuration>
         <setting name="compilerMaxHeapSize" value="512" />
         <setting name="gwtScriptOutputStyle" value="PRETTY" />
-        <setting name="gwtSdkUrl" value="file://$MODULE_DIR$/../../GWT/gwt-2.5.0" />
+        <setting name="gwtSdkUrl" value="file://E:/Java/GWT/gwt-2.5.0" />
         <setting name="webFacet" value="Web" />
       </configuration>
     </facet>
@@ -27,9 +27,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/war" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -44,7 +41,7 @@
     <orderEntry type="module-library">
       <library name="gwt-user.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/" />
+          <root url="jar://D:/GWT/gwt-2.5.0/gwt-user.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -53,7 +50,7 @@
     <orderEntry type="module-library">
       <library name="gwt-dev.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/gwt-dev.jar!/" />
+          <root url="jar://D:/GWT/gwt-2.5.0/gwt-dev.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -62,7 +59,7 @@
     <orderEntry type="module-library">
       <library name="validation-api-1.0.0.GA.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA.jar!/" />
+          <root url="jar://D:/GWT/gwt-2.5.0/validation-api-1.0.0.GA.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -71,7 +68,7 @@
     <orderEntry type="module-library">
       <library name="validation-api-1.0.0.GA-sources.jar">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
+          <root url="jar://D:/GWT/gwt-2.5.0/validation-api-1.0.0.GA-sources.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -88,13 +85,11 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="gwt-2..5.0" level="project" />
-    <orderEntry type="library" name="junit4" level="project" />
-    <orderEntry type="library" name="httpcore-4.2.2" level="project" />
+    <orderEntry type="library" name="jboss-client" level="project" />
+    <orderEntry type="library" name="jboss-msc-1.0.2.GA" level="project" />
     <orderEntry type="library" name="jgroups-3.0.6.Final" level="project" />
     <orderEntry type="library" name="jboss-as-server-7.1.1.Final" level="project" />
-    <orderEntry type="library" name="jboss-msc-1.0.2.GA" level="project" />
-    <orderEntry type="library" name="jboss-client" level="project" />
-    <orderEntry type="library" name="gwt-servlet" level="project" />
+    <orderEntry type="library" name="junit-4.11" level="project" />
   </component>
 </module>
 
