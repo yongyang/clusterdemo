@@ -46,6 +46,8 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
         for(Address address : members){
             IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
             ClusterNode node = new ClusterNode(ipAddress.getIpAddress().getHostAddress(), ipAddress.getPort());
+
+            // TODO: get the status of recivedBytes: channel.getReceivedBytes();
             clusterNodes.add(node);
         }
 
