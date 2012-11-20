@@ -40,6 +40,8 @@ public class ClusterDemo implements EntryPoint {
     Canvas bufferCanvas;
     Context2d bufferContext2d;
 
+    TextBox textBox = new TextBox();
+
     NodeGroup nodeGroup;
     // mouse positions relative to canvas
     int mouseX, mouseY;
@@ -94,7 +96,6 @@ public class ClusterDemo implements EntryPoint {
             }
         });
 
-        TextBox textBox = new TextBox();
         RootPanel.get("cluster-operations").add(textBox);
         RootPanel.get("cluster-operations").add(reloadButton);
         RootPanel.get("cluster-operations").add(shutdownButton);
@@ -117,6 +118,7 @@ public class ClusterDemo implements EntryPoint {
             public void onMouseMove(MouseMoveEvent event) {
                 mouseX = event.getRelativeX(canvas.getElement());
                 mouseY = event.getRelativeY(canvas.getElement());
+
             }
         });
 
@@ -124,6 +126,7 @@ public class ClusterDemo implements EntryPoint {
             public void onMouseOut(MouseOutEvent event) {
                 mouseX = -200;
                 mouseY = -200;
+                textBox.setText("");
             }
         });
 
@@ -153,7 +156,7 @@ public class ClusterDemo implements EntryPoint {
             }
         });
 
-        nodeGroup = new NodeGroup(width-60, height-60, 250);
+        nodeGroup = new NodeGroup(width-80, height-80, 200);
 
         final Timer redrawTimer = new Timer() {
             @Override
@@ -175,16 +178,25 @@ public class ClusterDemo implements EntryPoint {
     }
 
     private void redraw() {
-
         // reset bufferContext2d
         bufferContext2d.setFillStyle(REDRAW_COLOR);
         bufferContext2d.fillRect(0, 0, width, height);
 
         // draw image to bufferContext2d
-        nodeGroup.draw(bufferContext2d);
+        nodeGroup.draw(bufferContext2d,  mouseX, mouseY);
+        Node node = nodeGroup.getCurrentNode();
+        if(node != null) {
+            String value = node.getClusterNode().getIp() + ":" + node.getClusterNode().getPort();
+            if(value.equals(textBox.getValue())) {
+                textBox.setValue(value);
+            }
+        }
+        else {
+            textBox.setValue("");
+        }
 
         // draw bufferContext2d to front
-        context2d.drawImage(bufferContext2d.getCanvas(), mouseX, mouseY);
+        context2d.drawImage(bufferContext2d.getCanvas(), 0, 0);
 
     }
 

@@ -42,7 +42,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
     public List<ClusterNode> getClusterInfo(String input) {
 
         List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>();
-        for(int i=0; i<5; i++){
+        for(int i=0; i<10; i++){
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
             node.setPort(9000 + i);

@@ -24,18 +24,23 @@ import java.util.Map;
  */
 public class NodeGroup {
 
-    final double width;
-    final double height;
-    final double radius;
+    private final double width;
+    private final double height;
+    private final double radius;
 
-    Image nodeImg;
-    Map<String, Node> nodesMap;
-    boolean imageLoaded;
+    private final int nodeImageWidth = 80;
+    private final int nodeImageHeight = 80;
 
-    double step;
+    private Image nodeImg;
+    private Map<String, Node> nodesMap;
+    private boolean imageLoaded;
+
+    private double step;
 
     volatile boolean inUpdating = false;
     volatile boolean inDrawing = false;
+
+    private Node currentNode = null;
 
     public NodeGroup(double width, double height, double radius) {
         this.width = width;
@@ -46,7 +51,7 @@ public class NodeGroup {
         nodesMap = new HashMap<String, Node>();
 
         // init image
-        nodeImg = new Image("raspeberry-pi-logo.jpg");
+        nodeImg = new Image("cluster_node-80x80.png");
         nodeImg.addLoadHandler(new LoadHandler() {
             public void onLoad(LoadEvent event) {
                 imageLoaded = true;
@@ -107,7 +112,7 @@ public class NodeGroup {
         inUpdating = false;
     }
 
-    synchronized void draw(Context2d context) {
+    synchronized void draw(Context2d context, int mouseX, int mouseY) {
         if (!imageLoaded) {
             return;
         }
@@ -122,6 +127,7 @@ public class NodeGroup {
             sleepTimer.schedule(5);
         }
 
+        this.currentNode = null;
         inDrawing = true;
         step = (step + Math.PI/2.0 * 0.003);
 
@@ -164,16 +170,27 @@ public class NodeGroup {
         context.closePath();
 */
         for (Map.Entry<String, Node> entry : nodesMap.entrySet()) {
+
             Node node = entry.getValue();
+
             context.save();
+            //onMouseOver, shadow
+            if(mouseX > 0 && mouseY > 0 &&  mouseX - node.getPosition().getX() > 0 &&  mouseX - node.getPosition().getX() < nodeImageWidth  && mouseY - node.getPosition().getY() > 0 && mouseY - node.getPosition().getY() < nodeImageHeight ) {
+//                System.out.println("shadow, node: " + node.getPosition().getX() + ", " + node.getPosition().getY() + "; mouse: " + mouseX + ", " + mouseY);
+                context.setShadowOffsetX(5);
+                context.setShadowOffsetY(5);
+                context.setShadowBlur(30);
+                context.setShadowColor("black");
+                this.currentNode = node;
+            }
+
             context.beginPath();
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
             context.setFillStyle(CssColor.make("blue"));
-            context.fillText(node.getIdentity(), 0, 80);
+            context.fillText(node.getIdentity(), 0, nodeImageHeight+20);
             context.closePath();
 
-            //TODO: onMouseOver, shadow
 
             //TODO: How to blink
 
@@ -197,4 +214,8 @@ public class NodeGroup {
         inDrawing = false;
     }
 
+
+    public Node getCurrentNode() {
+        return currentNode;
+    }
 }
