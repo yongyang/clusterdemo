@@ -23,6 +23,19 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
 
     private int count = 0;
 
+    List<ClusterNode> clusterNodes;
+    {
+        clusterNodes = new ArrayList<ClusterNode>();
+
+        for(int i=0; i<10; i++){
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(9000 + i);
+            clusterNodes.add(node);
+        }
+    }
+
+
 /*
     public List<ClusterNode> getClusterInfo(String input) {
 
@@ -43,20 +56,33 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
     // for mock test
     public List<ClusterNode> getClusterInfo(String input) {
 
-        List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>();
-
         count++;
-        System.out.println("count: " + count);
-        for(int i=0; i<10; i++){
-            if(count > 10 && i==9) {
-                System.out.println("break: " + i);
-                break;
-            }
+        if(count == 10 ) {
+            clusterNodes.remove(0);
+        }
+
+        if(count == 20) {
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
-            node.setPort(9000 + i);
-            clusterNodes.add(node);
+            node.setPort(8888);
+            if(!clusterNodes.contains(node)) {
+                clusterNodes.add(node);
+            }
         }
+
+        if(count == 30) {
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(7777);
+            if(!clusterNodes.contains(node)) {
+                clusterNodes.add(node);
+            }
+            clusterNodes.remove(0);
+            count = 0;
+        }
+
+
+        System.out.println("count: " + count);
         return clusterNodes;
     }
 

@@ -19,6 +19,7 @@ class Node {
     private long newStart = 0;
     private long removeStart = 0;
 
+    private static final String STATUS_NEWING = "NEWING";
     private static final String STATUS_OK = "OK";
     private static final String STATUS_REMOVING = "REMOVING";
     private static final String STATUS_RESTARTING = "RESTARTING";
@@ -28,6 +29,7 @@ class Node {
     public Node(ClusterNode clusterNode) {
         this.clusterNode = clusterNode;
         this.newStart = System.currentTimeMillis();
+        this.status = STATUS_NEWING;
     }
 
     public void setPosition(double x, double y) {
@@ -55,22 +57,30 @@ class Node {
         }
     }
 
-    //TODO: if reload, it's to fast for removing and newing to show on UI ????
     public boolean isRemoving() {
         return System.currentTimeMillis() - removeStart  < lastForStatusChange;
     }
 
     public boolean isNewing(){
-        return  System.currentTimeMillis() - newStart  < lastForStatusChange;
+        boolean newing =  System.currentTimeMillis() - newStart  < lastForStatusChange;
+        if(!newing) {
+            if(status.equals(STATUS_NEWING)) {
+                status = STATUS_OK;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    //TODO: if reload, it's to fast for removing and newing to show on UI ????
+    public boolean isReloading() {
+        return false;
     }
 
     public boolean isTimeToRemove(){
         return removeStart !=0 && System.currentTimeMillis() - removeStart  > lastForStatusChange;
     }
 
-    public boolean hasNewed(){
-        return newStart !=0 && System.currentTimeMillis() - newStart  > lastForStatusChange;
-    }
 
     public String getIdentity() {
         return clusterNode.getIdentity();

@@ -145,7 +145,6 @@ public class NodeGroup {
             Node node = it.next();
             //TODO: remove ones can be removed now
             if(node.isTimeToRemove()) {
-                System.out.println("remove: " + node);
                 nodesMap.remove(node.getIdentity());
                 it.remove();
             }
@@ -199,9 +198,23 @@ public class NodeGroup {
             if(node.isRemoving()) {
                 context.setShadowOffsetX(5);
                 context.setShadowOffsetY(5);
-                context.setShadowBlur(30);
+                context.setShadowBlur(50);
                 context.setShadowColor("red");
 //                context.setGlobalAlpha(0.8);
+            }
+
+            //TODO: is New
+            if(node.isNewing()) {
+                //TODO: blink green or scale in
+                context.setShadowOffsetX(5);
+                context.setShadowOffsetY(5);
+                context.setShadowBlur(50);
+                context.setShadowColor("green");
+
+                if(node.isRemoving()) {
+                    //TODO: restarting!!! blink yellow
+                }
+
             }
 
             context.translate(node.getPosition().getX(), node.getPosition().getY());
@@ -211,16 +224,6 @@ public class NodeGroup {
             context.closePath();
 
 
-
-            //TODO: is New
-            if(node.isNewing()) {
-                //TODO: blink green or scale in
-
-                if(node.isRemoving()) {
-                    //TODO: restarting!!! blink yellow
-                }
-
-            }
 
             context.restore();
         }
