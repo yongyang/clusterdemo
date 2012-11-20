@@ -79,6 +79,10 @@ public class NodeGroup {
         }
         System.out.println("UpdateClusterInfo: " + clusterNodes.size() + ", " + Arrays.toString(clusterNodes.toArray()));
 
+        if(inDrawing) {
+            return ;
+        }
+
 /*
         while (inDrawing) {
             Timer sleepTimer = new Timer() {
@@ -122,14 +126,8 @@ public class NodeGroup {
             return;
         }
 
-        while (inUpdating) {
-            Timer sleepTimer = new Timer() {
-                @Override
-                public void run() {
-
-                }
-            };
-            sleepTimer.schedule(5);
+        if(inUpdating) {
+            return;
         }
 
         this.currentNode = null;

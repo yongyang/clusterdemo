@@ -39,6 +39,26 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>{
         return "ClusterNode{ip=" + ip + ", port=" + port + "}";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ClusterNode that = (ClusterNode) o;
+
+        if (port != that.port) return false;
+        if (ip != null ? !ip.equals(that.ip) : that.ip != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ip != null ? ip.hashCode() : 0;
+        result = 31 * result + port;
+        return result;
+    }
+
     public int compareTo(ClusterNode other) {
         if(other == null) return 0;
         return this.getIdentity().compareTo(other.getIdentity());
