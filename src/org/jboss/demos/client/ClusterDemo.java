@@ -184,10 +184,12 @@ public class ClusterDemo implements EntryPoint {
 
         // draw image to bufferContext2d
         nodeGroup.draw(bufferContext2d,  mouseX, mouseY);
+
+        // update current node info to textbox
         Node node = nodeGroup.getCurrentNode();
         if(node != null) {
             String value = node.getClusterNode().getIp() + ":" + node.getClusterNode().getPort();
-            if(value.equals(textBox.getValue())) {
+            if(!value.equals(textBox.getValue())) {
                 textBox.setValue(value);
             }
         }
