@@ -1,7 +1,9 @@
 package org.jboss.demos.client;
 
+import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.CssColor;
+import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
@@ -11,6 +13,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.demos.shared.ClusterNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -74,7 +77,9 @@ public class NodeGroup {
         if (!imageLoaded) {
             return;
         }
+        System.out.println("UpdateClusterInfo: " + clusterNodes.size() + ", " + Arrays.toString(clusterNodes.toArray()));
 
+/*
         while (inDrawing) {
             Timer sleepTimer = new Timer() {
                 @Override
@@ -84,6 +89,7 @@ public class NodeGroup {
             };
             sleepTimer.schedule(5);
         }
+*/
 
         inUpdating = true;
         Map<String, Node> newNodesMap = new HashMap<String, Node>();
@@ -91,7 +97,7 @@ public class NodeGroup {
             String id = clusterNode.getIdentity();
             if(nodesMap.containsKey(id)) {
                 Node node = nodesMap.remove(id);
-                node.updateClusterNodeInfo(clusterNode);
+                node.updateNodeInfo(clusterNode);
                 newNodesMap.put(id, node);
             }
             else {
@@ -100,7 +106,7 @@ public class NodeGroup {
                 newNodesMap.put(id, node);
             }
         }
-        // the lefe ones in NodesMap need to be removed
+        // the left ones in NodesMap need to be removed
         for(Map.Entry<String, Node> entry : nodesMap.entrySet()){
             String id = entry.getKey();
             Node node = entry.getValue();
@@ -139,7 +145,9 @@ public class NodeGroup {
             Node node = it.next();
             //TODO: remove ones can be removed now
             if(node.isTimeToRemove()) {
+                System.out.println("remove: " + node);
                 nodesMap.remove(node.getIdentity());
+                it.remove();
             }
 
         }
@@ -174,17 +182,28 @@ public class NodeGroup {
             Node node = entry.getValue();
 
             context.save();
+            context.beginPath();
+
             //onMouseOver, shadow
             if(mouseX > 0 && mouseY > 0 &&  mouseX - node.getPosition().getX() > 0 &&  mouseX - node.getPosition().getX() < nodeImageWidth  && mouseY - node.getPosition().getY() > 0 && mouseY - node.getPosition().getY() < nodeImageHeight ) {
 //                System.out.println("shadow, node: " + node.getPosition().getX() + ", " + node.getPosition().getY() + "; mouse: " + mouseX + ", " + mouseY);
+                this.currentNode = node;
                 context.setShadowOffsetX(5);
                 context.setShadowOffsetY(5);
                 context.setShadowBlur(30);
                 context.setShadowColor("black");
-                this.currentNode = node;
             }
 
-            context.beginPath();
+            //TODO: How to blink, blink with yellow blue, remove with Alpha
+            //to remove
+            if(node.isRemoving()) {
+                context.setShadowOffsetX(5);
+                context.setShadowOffsetY(5);
+                context.setShadowBlur(30);
+                context.setShadowColor("red");
+//                context.setGlobalAlpha(0.8);
+            }
+
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
             context.setFillStyle(CssColor.make("blue"));
@@ -192,12 +211,6 @@ public class NodeGroup {
             context.closePath();
 
 
-            //TODO: How to blink
-
-            //TODO: if to remove
-            if(node.isRemoving()) {
-                //TODO: //TODO: blink green or scale out
-            }
 
             //TODO: is New
             if(node.isNewing()) {
@@ -218,4 +231,42 @@ public class NodeGroup {
     public Node getCurrentNode() {
         return currentNode;
     }
+
+    private ImageData scaleImage(Image image, double scaleToRatio) {
+        Canvas canvasTmp = Canvas.createIfSupported();
+        Context2d context = canvasTmp.getContext2d();
+
+        double ch = (image.getHeight() * scaleToRatio) + 100;
+        double cw = (image.getWidth() * scaleToRatio) + 100;
+
+        canvasTmp.setCoordinateSpaceHeight((int) ch);
+        canvasTmp.setCoordinateSpaceWidth((int) cw);
+
+        ImageElement imageElement = ImageElement.as(image.getElement());
+
+        // s = source
+        // d = destination
+        double sx = 0;
+        double sy = 0;
+        double sw = imageElement.getWidth();
+        double sh = imageElement.getHeight();
+
+        double dx = 0;
+        double dy = 0;
+        double dw = imageElement.getWidth();
+        double dh = imageElement.getHeight();
+
+        // tell it to scale image
+        context.scale(scaleToRatio, scaleToRatio);
+
+        // draw image to canvas
+        context.drawImage(imageElement, sx, sy, sw, sh, dx, dy, dw, dh);
+
+        // get image data
+        double w = dw * scaleToRatio;
+        double h = dh * scaleToRatio;
+        ImageData imageData = context.getImageData(0, 0, w, h);
+        return imageData;
+    }
+
 }

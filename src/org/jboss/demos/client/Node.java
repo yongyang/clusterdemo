@@ -15,9 +15,15 @@ class Node {
     private ClusterNode clusterNode;
 
     // 2s
-    private long lastForStatusChange = 2000;
+    private long lastForStatusChange = 5000;
     private long newStart = 0;
     private long removeStart = 0;
+
+    private static final String STATUS_OK = "OK";
+    private static final String STATUS_REMOVING = "REMOVING";
+    private static final String STATUS_RESTARTING = "RESTARTING";
+
+    private String status = STATUS_OK;
 
     public Node(ClusterNode clusterNode) {
         this.clusterNode = clusterNode;
@@ -36,15 +42,20 @@ class Node {
         return clusterNode;
     }
 
-    public void updateClusterNodeInfo(ClusterNode clusterNode) {
+    public void updateNodeInfo(ClusterNode clusterNode) {
+        this.clusterNode = clusterNode;
         // new ???
     }
 
     public void setRemoved() {
-        removeStart = System.currentTimeMillis();
+        if(!status.equals(STATUS_REMOVING)) {
+            // avoid set removed repeatedly, so the removeStart reset
+            removeStart = System.currentTimeMillis();
+            status = STATUS_REMOVING;
+        }
     }
 
-    //TODO: if reload, it's to fast for removeing and newing to show on UI ????
+    //TODO: if reload, it's to fast for removing and newing to show on UI ????
     public boolean isRemoving() {
         return System.currentTimeMillis() - removeStart  < lastForStatusChange;
     }

@@ -21,6 +21,8 @@ import java.util.List;
 public class ManagementServiceImpl extends RemoteServiceServlet implements
                                                               ManagementService {
 
+    private int count = 0;
+
 /*
     public List<ClusterNode> getClusterInfo(String input) {
 
@@ -42,7 +44,14 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
     public List<ClusterNode> getClusterInfo(String input) {
 
         List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>();
+
+        count++;
+        System.out.println("count: " + count);
         for(int i=0; i<10; i++){
+            if(count > 10 && i==9) {
+                System.out.println("break: " + i);
+                break;
+            }
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
             node.setPort(9000 + i);
