@@ -107,9 +107,8 @@ public class NodeGroup {
             }
         }
         // the left ones in NodesMap need to be removed
-        for(Map.Entry<String, Node> entry : nodesMap.entrySet()){
-            String id = entry.getKey();
-            Node node = entry.getValue();
+        for(Node node : nodesMap.values()){
+            String id = node.getIdentity();
             node.setRemoved();
             newNodesMap.put(id, node);
         }
@@ -176,9 +175,7 @@ public class NodeGroup {
         context.fill();
         context.closePath();
 */
-        for (Map.Entry<String, Node> entry : nodesMap.entrySet()) {
-
-            Node node = entry.getValue();
+        for (Node node  : nodesMap.values()) {
 
             context.save();
             context.beginPath();
