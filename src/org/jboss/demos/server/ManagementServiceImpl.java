@@ -31,6 +31,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
             node.setPort(9000 + i);
+            node.setReceivedBytes(0);
             clusterNodes.add(node);
         }
     }
@@ -59,11 +60,23 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
     public List<ClusterNode> getClusterInfo(String input) {
 
         count++;
-        if(count == 10 ) {
-            clusterNodes.remove(0);
+
+        if(count == 20) { // test add
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(8888);
+            if(!clusterNodes.contains(node)) {
+                clusterNodes.add(node);
+            }
+        }
+        if(count == 21) { // test reloading, remove/start
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(8888);
+            clusterNodes.remove(node);
         }
 
-        if(count == 20) {
+        if(count == 22) { // start
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
             node.setPort(8888);
@@ -72,18 +85,25 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
             }
         }
 
-        if(count == 30) {
+
+        if(count == 23) { // test start
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
-            node.setPort(7777);
+            node.setPort(6666);
             if(!clusterNodes.contains(node)) {
                 clusterNodes.add(node);
             }
-            clusterNodes.remove(0);
-            count = 0;
+        }
+        if(count == 25) { // test shutdown
+            ClusterNode node = new ClusterNode();
+            node.setIp("127.0.0.1");
+            node.setPort(6666);
+            clusterNodes.remove(node);
         }
 
-
+        if(count == 30) {
+            count = 0;
+        }
         System.out.println("count: " + count);
         return clusterNodes;
     }

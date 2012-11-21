@@ -7,7 +7,6 @@ import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.demos.shared.ClusterNode;
@@ -113,7 +112,7 @@ public class NodeGroup {
         // the left ones in NodesMap need to be removed
         for(Node node : nodesMap.values()){
             String id = node.getIdentity();
-            node.setRemoved();
+            node.setRemoving();
             newNodesMap.put(id, node);
         }
         nodesMap.clear();
@@ -189,7 +188,7 @@ public class NodeGroup {
             }
 
             //TODO: How to blink, blink with yellow blue, remove with Alpha
-            //to remove
+            //Removing
             if(node.isRemoving()) {
                 context.setShadowOffsetX(5);
                 context.setShadowOffsetY(5);
@@ -198,19 +197,25 @@ public class NodeGroup {
 //                context.setGlobalAlpha(0.8);
             }
 
-            //TODO: is New
-            if(node.isNewing()) {
+            //Starting
+            if(node.isStarting()) {
                 //TODO: blink green or scale in
                 context.setShadowOffsetX(5);
                 context.setShadowOffsetY(5);
                 context.setShadowBlur(50);
                 context.setShadowColor("green");
 
-                if(node.isRemoving()) {
-                    //TODO: restarting!!! blink yellow
-                }
-
             }
+
+            //Reloading
+            if(node.isReloading()) {
+                context.setShadowOffsetX(5);
+                context.setShadowOffsetY(5);
+                context.setShadowBlur(50);
+                context.setShadowColor("yellow");
+            }
+
+
 
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
