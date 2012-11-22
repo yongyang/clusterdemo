@@ -49,6 +49,7 @@ public class ClusterDemoTest extends GWTTestCase {
     delayTestFinish(10000);
 
     // Send a request to the server.
+/*
     greetingService.getClusterInfo("GWT User", new AsyncCallback<List<ClusterNode>>() {
         public void onFailure(Throwable caught) {
             //To change body of implemented methods use File | Settings | File Templates.
@@ -58,6 +59,7 @@ public class ClusterDemoTest extends GWTTestCase {
             //To change body of implemented methods use File | Settings | File Templates.
         }
     });
+*/
   }
 
 

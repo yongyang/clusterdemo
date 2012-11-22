@@ -2,6 +2,7 @@ package org.jboss.demos.client;
 
 import org.jboss.demos.shared.ClusterNode;
 
+import static org.jboss.demos.client.NodeGroup.lastForStatusChange;
 /**
 * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
 * @create 11/19/12 8:22 AM
@@ -13,7 +14,6 @@ class Node {
     private ClusterNode clusterNode;
 
     // 3s
-    private long lastForStatusChange = 3000;
     private long newStart = 0;
     private long removeStart = 0;
 

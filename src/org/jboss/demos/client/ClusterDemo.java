@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import org.jboss.demos.shared.ClusterInfo;
 import org.jboss.demos.shared.ClusterNode;
 
 import java.util.List;
@@ -49,8 +50,8 @@ public class ClusterDemo implements EntryPoint {
     static final int refreshRate = 25;
 
     // canvas size, in px
-    static final int height = 600;
-    static final int width = 600;
+    public static final int height = 600;
+    public static final int width = 600;
     static final CssColor REDRAW_COLOR = CssColor.make("white");
 
     /**
@@ -198,12 +199,12 @@ public class ClusterDemo implements EntryPoint {
     }
 
     private void updateClusterInfo() {
-        managementService.getClusterInfo("", new AsyncCallback<List<ClusterNode>>() {
+        managementService.getClusterInfo("", new AsyncCallback<ClusterInfo>() {
             public void onFailure(Throwable caught) {
-                GWT.log("faile to get cluster info");
+                GWT.log("faile to get cluster info, " + caught.getMessage());
             }
 
-            public void onSuccess(List<ClusterNode> result) {
+            public void onSuccess(ClusterInfo result) {
                 nodeGroup.updateClusterInfo(result);
             }
         });

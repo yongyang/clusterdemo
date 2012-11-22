@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
+import org.jboss.demos.shared.ClusterInfo;
 import org.jboss.demos.shared.ClusterNode;
 
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ import java.util.Map;
  */
 public class NodeGroup {
 
+    public static final long lastForStatusChange = 3000;
+
+
     private final double width;
     private final double height;
     private final double radius;
@@ -32,9 +36,14 @@ public class NodeGroup {
     private final int nodeImageWidth = 80;
     private final int nodeImageHeight = 80;
 
+    private final int refreshImageWidth =256;
+    private final int refreshImageHeight =256;
+
     private Image nodeImg;
+    private boolean nodeImageLoaded;
+    private Image refreshImg;
+    private boolean refreshImageLoaded;
     private Map<String, Node> nodesMap;
-    private boolean imageLoaded;
 
     private double step;
 
@@ -42,6 +51,9 @@ public class NodeGroup {
     volatile boolean inDrawing = false;
 
     private Node currentNode = null;
+    private long receivedBytes = 0;
+    private boolean isReceiving = false;
+    private long receiveStart = 0;
 
     public NodeGroup(double width, double height, double radius) {
         this.width = width;
@@ -55,7 +67,7 @@ public class NodeGroup {
         nodeImg = new Image("cluster_node-80x80.png");
         nodeImg.addLoadHandler(new LoadHandler() {
             public void onLoad(LoadEvent event) {
-                imageLoaded = true;
+                nodeImageLoaded = true;
                 // once image is loaded, init logo objects
 /*
                 ImageElement imageElement = (ImageElement) nodeImg.getElement().cast();
@@ -67,21 +79,54 @@ public class NodeGroup {
 */
             }
         });
+
+        refreshImg = new Image("cluster_receiving-256x256.png");
+        refreshImg.addLoadHandler(new LoadHandler() {
+            public void onLoad(LoadEvent event) {
+                refreshImageLoaded = true;
+                // once image is loaded, init logo objects
+/*
+                ImageElement imageElement = (ImageElement) nodeImg.getElement().cast();
+                for (int i = NodeGroup.this.numNodes - 1; i >= 0; i--) {
+                    Node node = new Node(null);
+                    node.setPosition(NodeGroup.this.width / 2, NodeGroup.this.height / 2);
+                    nodesMap.put(node.getIdentity(), node);
+                }
+*/
+            }
+        });
+
         nodeImg.setVisible(false);
+        refreshImg.setVisible(false);
         RootPanel.get().add(nodeImg); // image must be on page to fire load
+        RootPanel.get().add(refreshImg); // image must be on page to fire load
     }
 
-    public synchronized void updateClusterInfo(List<ClusterNode> clusterNodes){
-        if (!imageLoaded) {
-            return;
-        }
-        System.out.println("UpdateClusterInfo: " + clusterNodes.size() + ", " + Arrays.toString(clusterNodes.toArray()));
+    public synchronized void updateClusterInfo(ClusterInfo clusterInfo){
 
         if(inDrawing) {
             return ;
         }
 
         inUpdating = true;
+
+        List<ClusterNode> clusterNodes = clusterInfo.getClusterNodes();
+        System.out.println("UpdateClusterInfo: " + clusterNodes.size() + ", " + Arrays.toString(clusterNodes.toArray()));
+
+        // set receving status
+        if(clusterInfo.getReceivedBytes() > receivedBytes){
+            receivedBytes = clusterInfo.getReceivedBytes();
+            isReceiving = true;
+            receiveStart = System.currentTimeMillis();
+        }
+        else {
+            if(System.currentTimeMillis() - receiveStart > lastForStatusChange) {
+                isReceiving = false;
+                receiveStart = 0;
+            }
+        }
+
+
         Map<String, Node> newNodesMap = new HashMap<String, Node>();
         for(ClusterNode clusterNode : clusterNodes) { // look new get clusterNodes
             String id = clusterNode.getIdentity();
@@ -110,7 +155,10 @@ public class NodeGroup {
     }
 
     synchronized void draw(Context2d context, int mouseX, int mouseY) {
-        if (!imageLoaded) {
+        if (!nodeImageLoaded) {
+            return;
+        }
+        if (!refreshImageLoaded) {
             return;
         }
 
@@ -211,13 +259,15 @@ public class NodeGroup {
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
             context.setFillStyle(CssColor.make("blue"));
             context.fillText(node.getIdentity(), 0, nodeImageHeight+20);
-            if(node.isReceiving()) { // receiving
-//                context.setFillStyle(CssColor.make("blue"));
-//                context.rect(0, 0, nodeImageWidth, nodeImageHeight);
-                context.fillRect(0, 0, 5, nodeImageHeight);
-            }
             context.closePath();
             context.restore();
+        }
+        if(isReceiving) { // channel receiving
+//                context.setFillStyle(CssColor.make("blue"));
+//                context.rect(0, 0, nodeImageWidth, nodeImageHeight);
+//                context.fillRect(0, 0, 5, nodeImageHeight);
+            context.drawImage((ImageElement) refreshImg.getElement().cast(), (ClusterDemo.width-refreshImageWidth)/2, (ClusterDemo.height-refreshImageHeight)/2);
+
         }
         inDrawing = false;
     }

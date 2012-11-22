@@ -3,6 +3,7 @@ package org.jboss.demos.client;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import org.jboss.demos.shared.ClusterInfo;
 import org.jboss.demos.shared.ClusterNode;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @RemoteServiceRelativePath("managementservice")
 public interface ManagementService extends RemoteService {
 
-    List<ClusterNode> getClusterInfo(String name) throws IllegalArgumentException;
+    ClusterInfo getClusterInfo(String targetNodeIp) throws IllegalArgumentException;
 
     boolean invokeOperation(String name, String ip, String[] parameters) throws Exception;
 
