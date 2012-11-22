@@ -3,15 +3,15 @@
   <component name="ChangeListManager">
     <list id="696b731a-4c2d-4eef-8dcd-e6079dbf87c0" name="Default" comment="Add AS7ClusterView" />
     <list default="true" id="9d13dc51-4026-430b-9a9a-4a312702631e" name="no IDEA files" comment="no IDEA files">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClusterDemo.iml" afterPath="$PROJECT_DIR$/ClusterDemo.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterdemo.ipr" afterPath="$PROJECT_DIR$/clusterdemo.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterdemo.iws" afterPath="$PROJECT_DIR$/clusterdemo.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java" afterPath="$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/ClusterDemo.html" afterPath="$PROJECT_DIR$/war/ClusterDemo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/web.xml" />
     </list>
     <ignored path="clusterdemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,65 +84,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ClusterDemo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
+      <file leaf-file-name="NodeGroup.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="60" selection-start="3502" selection-end="3502" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#3538#3655#0" expanded="true" />
-                <element signature="e#3644#3645#0" expanded="true" />
-                <element signature="e#3755#3883#0" expanded="true" />
-                <element signature="e#3872#3873#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManagementServiceImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="752" selection-end="752" vertical-scroll-proportion="0.37388194">
-              <folding>
-                <element signature="e#566#593#0" expanded="true" />
-                <element signature="e#1609#1622#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClusterDemo.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClusterDemo.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="19" selection-start="3115" selection-end="3115" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AS7ClusterNodes.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/org/jboss/demos/AS7ClusterNodes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.0">
+            <state line="157" column="0" selection-start="5396" selection-end="5396" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4320#4334#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClusterNode.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
+      <file leaf-file-name="ClusterDemo.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="117" column="44" selection-start="4385" selection-end="4385" vertical-scroll-proportion="-3.5333333">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3178#4724#0" expanded="true" />
+                <element signature="e#3801#4019#0" expanded="true" />
+                <element signature="e#3992#3993#0" expanded="true" />
+                <element signature="e#4241#4459#0" expanded="true" />
+                <element signature="e#4432#4433#0" expanded="true" />
+                <element signature="e#4713#4714#0" expanded="true" />
+                <element signature="e#4767#6324#0" expanded="true" />
+                <element signature="e#5394#5614#0" expanded="true" />
+                <element signature="e#5587#5588#0" expanded="true" />
+                <element signature="e#5837#6057#0" expanded="true" />
+                <element signature="e#6030#6031#0" expanded="true" />
+                <element signature="e#6313#6314#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JMXConnectorFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/jdk1.6.0_37/src.zip!/javax/management/remote/JMXConnectorFactory.java">
+      <file leaf-file-name="SimpleDispatcher.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/SimpleDispatcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="326" column="0" selection-start="13159" selection-end="13159" vertical-scroll-proportion="0.0">
+            <state line="53" column="0" selection-start="1949" selection-end="2104" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,46 +131,63 @@
       <file leaf-file-name="ManagementServiceAsync.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="9" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManagementService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java">
+      <file leaf-file-name="ManagementServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NodeGroup.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="20" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0">
+            <state line="175" column="66" selection-start="6061" selection-end="6061" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1361#1933#0" expanded="true" />
-                <element signature="e#1922#1923#0" expanded="false" />
+                <element signature="e#1495#1522#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DispatchAPITest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/DispatchAPITest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="38" selection-start="2275" selection-end="2275" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DispatchResult.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/DispatchResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="21" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
+          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+            <state />
+          </provider>
           <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="44" selection-start="389" selection-end="389" vertical-scroll-proportion="-7.3913045">
+              <folding />
+            </state>
           </provider>
           <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
             <state />
           </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-            <state />
-          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManagementService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="2" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0">
+            <state line="18" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -209,24 +206,27 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" />
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" />
         <option value="$PROJECT_DIR$/test/org/jboss/demos/AS7ClusterView.java" />
         <option value="$PROJECT_DIR$/test/org/jboss/demos/AS7ClusterNodes.java" />
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ClientClusterNode.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/Cluster.java" />
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
         <option value="$PROJECT_DIR$/ClusterDemo.iml" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterInfo.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" />
+        <option value="$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java" />
+        <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-4" />
-    <option name="y" value="-4" />
-    <option name="width" value="1288" />
-    <option name="height" value="764" />
+    <option name="width" value="1920" />
+    <option name="height" value="1017" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -259,30 +259,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clusterdemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClusterDemo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -333,6 +309,184 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jboss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dmr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jboss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jboss" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clusterdemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClusterDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -342,6 +496,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="292" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="292" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
@@ -367,11 +522,22 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/war" />
+    </key>
+  </component>
   <component name="RunManager" selected="GWT Configuration.ClusterDemo">
     <configuration default="false" name="ClusterDemo" type="GWT.ConfigurationType" factoryName="GWT Configuration" temporary="true">
       <module name="ClusterDemo" />
       <option name="RUN_PAGE" value="ClusterDemo.html" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -547,43 +713,95 @@
       <created>1353254456061</created>
       <updated>1353254456061</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Shadow, new node picture">
+      <created>1353393932735</created>
+      <updated>1353393932735</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Minor fix">
+      <created>1353394030237</created>
+      <updated>1353394030237</updated>
+    </task>
+    <task id="LOCAL-00010" summary="removing worked">
+      <created>1353397134484</created>
+      <updated>1353397134484</updated>
+    </task>
+    <task id="LOCAL-00011" summary="new, remove worked">
+      <created>1353398906852</created>
+      <updated>1353398906852</updated>
+    </task>
+    <task id="LOCAL-00012" summary="remove Map.Entry">
+      <created>1353399070224</created>
+      <updated>1353399070224</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Minor fix">
+      <created>1353400617555</created>
+      <updated>1353400617555</updated>
+    </task>
+    <task id="LOCAL-00014" summary="TODO:">
+      <created>1353401198834</created>
+      <updated>1353401198834</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Minor fix">
+      <created>1353497507727</created>
+      <updated>1353497507727</updated>
+    </task>
+    <task id="LOCAL-00016" summary="improve status switching">
+      <created>1353551012821</created>
+      <updated>1353551012821</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Receiving indicator worked">
+      <created>1353552524893</created>
+      <updated>1353552524893</updated>
+    </task>
+    <task id="LOCAL-00018" summary="add operation method">
+      <created>1353553869108</created>
+      <updated>1353553869108</updated>
+    </task>
+    <task id="LOCAL-00019" summary="receive bytes worked">
+      <created>1353566073448</created>
+      <updated>1353566073448</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Minor fix">
+      <created>1353566583311</created>
+      <updated>1353566583311</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1288" height="764" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1017" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995495" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5802269" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2792793" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21404682" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21396397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995495" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22933549" sideWeight="0.7792642" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22073579" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20556745" sideWeight="0.6993243" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3006757" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -591,8 +809,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <value>
         <are-packages-shown value="false" />
@@ -639,6 +857,15 @@
     <MESSAGE value="Add AS7ClusterNodes to get Cluster Nodes by JMX and ServiceContainer" />
     <MESSAGE value="rename" />
     <MESSAGE value="Add AS7ClusterView" />
+    <MESSAGE value="Shadow, new node picture" />
+    <MESSAGE value="removing worked" />
+    <MESSAGE value="new, remove worked" />
+    <MESSAGE value="remove Map.Entry" />
+    <MESSAGE value="TODO:" />
+    <MESSAGE value="improve status switching" />
+    <MESSAGE value="Receiving indicator worked" />
+    <MESSAGE value="add operation method" />
+    <MESSAGE value="receive bytes worked" />
     <MESSAGE value="Minor fix" />
   </component>
   <component name="XDebuggerManager">
@@ -649,128 +876,241 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/Java/GWT/gwt-2.5.0/gwt-user.jar!/com/google/gwt/canvas/dom/client/Context2d.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="426" column="27" selection-start="13170" selection-end="13170" vertical-scroll-proportion="0.33277026" />
-      </provider>
-    </entry>
-    <entry file="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jboss/msc/main/jboss-msc-1.0.2.GA.jar!/org/jboss/msc/service/ServiceName.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="58" selection-start="614" selection-end="614" vertical-scroll-proportion="0.34969324" />
-      </provider>
-    </entry>
-    <entry file="jar://E:/jboss/jboss-as-7.1.1.Final/modules/org/jboss/msc/main/jboss-msc-1.0.2.GA.jar!/org/jboss/msc/service/ServiceContainer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="24" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.5337423" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/ClusterDemo.gwt.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://C:/jdk1.6.0_37/src.zip!/javax/management/remote/JMXConnectorFactory.java">
+    <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/Base64Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="326" column="0" selection-start="13159" selection-end="13159" vertical-scroll-proportion="0.0" />
+        <state line="38" column="42" selection-start="1478" selection-end="1478" vertical-scroll-proportion="-1.6995413" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java">
+    <entry file="file://$PROJECT_DIR$/ClusterDemo.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
+        <state line="91" column="16" selection-start="3662" selection-end="3662" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/war/raspeberry-pi-logo.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/jboss/demos/AS7ClusterNodes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="38" selection-start="1368" selection-end="1368" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="67" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="36" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="49" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-user.jar!/com/google/gwt/canvas/dom/client/Context2d.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="906" column="40" selection-start="26932" selection-end="26932" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1348192344000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/SimpleDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1949" selection-end="2104" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="34" selection-start="679" selection-end="679" vertical-scroll-proportion="0.11929824">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/war/WEB-INF/web.xml">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+        <state />
+      </provider>
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="44" selection-start="389" selection-end="389" vertical-scroll-proportion="-7.3913045">
+          <folding />
+        </state>
       </provider>
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
         <state />
       </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/DispatchResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="2" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0">
+        <state line="58" column="21" selection-start="1860" selection-end="1860" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/Base64Test.java">
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/dmr/ModelDescriptionConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="42" selection-start="1478" selection-end="1478" vertical-scroll-proportion="-1.6995413">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="62" column="31" selection-start="3184" selection-end="3184" vertical-scroll-proportion="-2.0578947">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="562" selection-end="562" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/DispatchAPITest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="38" selection-start="2275" selection-end="2275" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="9" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
+        <state line="15" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/Java/GWT/gwt-2.5.0/gwt-user.jar!/com/google/gwt/user/client/rpc/AsyncCallback.java">
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="17" selection-start="3184" selection-end="3184" vertical-scroll-proportion="0.33235294">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/org/jboss/demos/AS7ClusterNodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.0">
+        <state line="157" column="0" selection-start="5396" selection-end="5396" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4320#4334#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="66" selection-start="6061" selection-end="6061" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1495#1522#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="60" selection-start="3502" selection-end="3502" vertical-scroll-proportion="0.0">
+        <state line="117" column="44" selection-start="4385" selection-end="4385" vertical-scroll-proportion="-3.5333333">
           <folding>
-            <element signature="e#3538#3655#0" expanded="true" />
-            <element signature="e#3644#3645#0" expanded="true" />
-            <element signature="e#3755#3883#0" expanded="true" />
-            <element signature="e#3872#3873#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="20" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1361#1933#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClusterDemo.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="19" selection-start="3115" selection-end="3115" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="752" selection-end="752" vertical-scroll-proportion="0.37388194">
-          <folding>
-            <element signature="e#566#593#0" expanded="true" />
-            <element signature="e#1609#1622#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3178#4724#0" expanded="true" />
+            <element signature="e#3801#4019#0" expanded="true" />
+            <element signature="e#3992#3993#0" expanded="true" />
+            <element signature="e#4241#4459#0" expanded="true" />
+            <element signature="e#4432#4433#0" expanded="true" />
+            <element signature="e#4713#4714#0" expanded="true" />
+            <element signature="e#4767#6324#0" expanded="true" />
+            <element signature="e#5394#5614#0" expanded="true" />
+            <element signature="e#5587#5588#0" expanded="true" />
+            <element signature="e#5837#6057#0" expanded="true" />
+            <element signature="e#6030#6031#0" expanded="true" />
+            <element signature="e#6313#6314#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -854,7 +1194,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>junit-4.11</last-edited>
+          <last-edited>jgroups-3.0.6.Final</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

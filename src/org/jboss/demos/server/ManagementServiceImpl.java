@@ -13,6 +13,7 @@ import org.apache.http.util.EntityUtils;
 import org.jboss.as.server.CurrentServiceContainer;
 import org.jboss.demos.client.ManagementService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.jboss.demos.server.dmr.ModelDescriptionConstants;
 import org.jboss.demos.server.dmr.ModelNode;
 import org.jboss.demos.shared.ClusterInfo;
 import org.jboss.demos.shared.ClusterNode;
@@ -32,11 +33,19 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import static org.jboss.demos.server.dmr.ModelDescriptionConstants.MODEL_DESCRIPTION;
+import static org.jboss.demos.server.dmr.ModelDescriptionConstants.OP;
+
 /**
  * The server side implementation of the RPC service.
  */
 @SuppressWarnings("serial")
 public class ManagementServiceImpl extends RemoteServiceServlet implements ManagementService {
+
+    public static final String MANAGEMENT_PORT = "MANAGEMENT_PORT";
+    public static final String MANAGEMENT_USER = "MANAGEMENT_USER";
+    public static final String MANAGEMENT_PASSWORD = "MANAGEMENT_PASSWORD";
+    public static final String APPLICATION_DMR_ENCODED = "application/dmr-encoded";
 
     private int count = 0;
 
@@ -138,37 +147,47 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         return clusterInfo;
     }
 
-    public boolean invokeOperation(String name, String ip, String[] parameters) throws Exception {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean invokeOperation(String ip, String name,  String[] parameters) {
+//        return false;
+        try {
+            return invokeOperationByHttp(ip, name);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    private String domainApiUrl = "http://localhost:9990/management";
-    private static final String APPLICATION_DMR_ENCODED = "application/dmr-encoded";
+    private boolean invokeOperationByHttp(String ip, String operationName) throws IOException {
+        ModelNode operation = new ModelNode();
+        operation.get(OP).set(operationName);
+        operation.get(ModelDescriptionConstants.ADDRESS).add("/");
 
-    private HttpURLConnection createHttpClientConnection(ModelNode operation) throws IOException {
         try {
+
+            int port = Integer.parseInt(getServletContext().getInitParameter(MANAGEMENT_PORT).trim());
+            String user = getServletContext().getInitParameter(MANAGEMENT_USER);
+            String password = getServletContext().getInitParameter(MANAGEMENT_PASSWORD);
+
             DefaultHttpClient httpclient = new DefaultHttpClient();
 
             httpclient.getCredentialsProvider().setCredentials(
-                    new AuthScope(AuthScope.ANY_HOST, 9990, "ManagementRealm"),
-                    new UsernamePasswordCredentials("admin", "123456"));
+                    new AuthScope(AuthScope.ANY_HOST, port, "ManagementRealm"),
+                    new UsernamePasswordCredentials(user, password));
 
-            HttpPost httppost = new HttpPost("http://localhost:9990/management");
+            //private String domainApiUrl = "http://localhost:9990/management";
+            HttpPost httppost = new HttpPost("http://" + ip + ":" + port + "/management");
             httppost.setEntity(new StringEntity(operation.toBase64String()));
             httppost.setHeader("Accept", APPLICATION_DMR_ENCODED);
             httppost.setHeader("Content-Type", APPLICATION_DMR_ENCODED);
 
             System.out.println("executing request " + httppost.getRequestLine() + ", " + Arrays.toString(httppost.getAllHeaders()));
-
             System.out.println(operation.toString());
 
             HttpResponse response;
             response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
 
-
-            System.out.println("----------------------------------------");
-            System.out.println(response.getStatusLine());
             if (entity != null) {
                 System.out.println("Response content length: " + entity.getContentLength());
                 BufferedReader in = new BufferedReader(new InputStreamReader(entity.getContent()));
@@ -188,12 +207,12 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 
             httpclient.getConnectionManager().shutdown();
         } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return false;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
+            return false;
         }
-        return null;
+        return true;
     }
 }

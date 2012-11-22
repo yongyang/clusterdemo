@@ -174,18 +174,6 @@ public class NodeGroup {
         List<Node> nodes = new ArrayList<Node>(nodesMap.values());
 
 
-/*
-        for(Iterator<Node> it = nodes.iterator(); it.hasNext(); ){
-            Node node = it.next();
-            //TODO: remove ones can be removed now
-            if(node.isTimeToRemove()) {
-                nodesMap.remove(node.getIdentity());
-                it.remove();
-            }
-
-        }
-*/
-
         Collections.sort(nodes, new Comparator<Node>() {
             public int compare(Node o1, Node o2) {
                 return o1.getIdentity().compareTo(o2.getIdentity());

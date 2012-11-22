@@ -16,6 +16,6 @@ public interface ManagementService extends RemoteService {
 
     ClusterInfo getClusterInfo(String targetNodeIp) throws IllegalArgumentException;
 
-    boolean invokeOperation(String name, String ip, String[] parameters) throws Exception;
+    boolean invokeOperation(String ip, String name, String[] parameters);
 
 }

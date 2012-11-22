@@ -42,6 +42,8 @@ public class ClusterDemo implements EntryPoint {
     Context2d bufferContext2d;
 
     TextBox textBox = new TextBox();
+    Button reloadButton = new Button("Reload");
+    Button shutdownButton = new Button("Shutdown");
 
     NodeGroup nodeGroup;
     // mouse positions relative to canvas
@@ -85,18 +87,86 @@ public class ClusterDemo implements EntryPoint {
   }
 
     private void addButtons() {
-        Button reloadButton = new Button("Reload", new ClickHandler() {
+        reloadButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                Window.alert("Test Management API");
+                String value = textBox.getValue();
+                if (value != null && !value.isEmpty()) {
+                    value = value.trim();
+                }
+                else {
+                    return;
+                }
+                String ip = value.substring(0, value.indexOf(":"));
+
+                reloadButton.setEnabled(false);
+                managementService.invokeOperation(ip, "reload", new String[0], new AsyncCallback<Boolean>() {
+                    public void onFailure(Throwable caught) {
+                        new Timer() {
+                            @Override
+                            public void run() {
+                                reloadButton.setEnabled(true);
+                            }
+                        }.schedule(2000);
+
+                        Window.alert("fail to invoke operation reload, " + caught.getMessage());
+                    }
+
+                    public void onSuccess(Boolean result) {
+                        new Timer() {
+                            @Override
+                            public void run() {
+                                reloadButton.setEnabled(true);
+                            }
+                        }.schedule(2000);
+
+                        if (!result) {
+                            Window.alert("reload operation sent, but return false, please check server side logs!");
+                        }
+                    }
+                });
             }
         });
 
-        Button shutdownButton = new Button("Shutdown", new ClickHandler() {
+        shutdownButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                Window.alert("Test Management API");
+                String value = textBox.getValue();
+                if (value != null && !value.isEmpty()) {
+                    value = value.trim();
+                }
+                else {
+                    return;
+                }
+                String ip = value.substring(0, value.indexOf(":"));
+
+                shutdownButton.setEnabled(false);
+                managementService.invokeOperation( ip,"shutdown", new String[0], new AsyncCallback<Boolean>() {
+                    public void onFailure(Throwable caught) {
+                        new Timer() {
+                            @Override
+                            public void run() {
+                                shutdownButton.setEnabled(true);
+                            }
+                        }.schedule(2000);
+                        Window.alert("fail to invoke operation shutdown, " + caught.getMessage());
+                    }
+
+                    public void onSuccess(Boolean result) {
+                        new Timer() {
+                            @Override
+                            public void run() {
+                                shutdownButton.setEnabled(true);
+                            }
+                        }.schedule(2000);
+
+                        if(!result) {
+                            Window.alert("shutdown operation sent, but return false, please check server side logs!");
+                        }
+                    }
+                } );
             }
         });
 
+        textBox.setReadOnly(true);
         RootPanel.get("cluster-operations").add(textBox);
         RootPanel.get("cluster-operations").add(reloadButton);
         RootPanel.get("cluster-operations").add(shutdownButton);

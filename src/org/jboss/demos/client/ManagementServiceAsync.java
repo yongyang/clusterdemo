@@ -13,5 +13,5 @@ public interface ManagementServiceAsync {
 
     void getClusterInfo(String targetNodeIp, AsyncCallback<ClusterInfo> callback) throws IllegalArgumentException;
 
-    void invokeOperation(String name, String ip, String[] parameters, AsyncCallback<Boolean> callback) throws Exception;
+    void invokeOperation( String ip, String name, String[] parameters, AsyncCallback<Boolean> callback);
 }
