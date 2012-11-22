@@ -263,10 +263,13 @@ public class NodeGroup {
             context.restore();
         }
         if(isReceiving) { // channel receiving
-//                context.setFillStyle(CssColor.make("blue"));
-//                context.rect(0, 0, nodeImageWidth, nodeImageHeight);
-//                context.fillRect(0, 0, 5, nodeImageHeight);
+//          context.setFillStyle(CssColor.make("blue"));
+//          context.rect(0, 0, nodeImageWidth, nodeImageHeight);
+//          context.fillRect(0, 0, 5, nodeImageHeight);
+            context.save();
+//            context.setGlobalAlpha(0.5);
             context.drawImage((ImageElement) refreshImg.getElement().cast(), (ClusterDemo.width-refreshImageWidth)/2, (ClusterDemo.height-refreshImageHeight)/2);
+            context.restore();
 
         }
         inDrawing = false;

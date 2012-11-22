@@ -132,7 +132,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 
         ClusterInfo clusterInfo = new ClusterInfo();
         clusterInfo.setClusterNodes(clusterNodes);
-        if(count % 10 == 0) {
+        if(count % 6 == 0) {
             clusterInfo.setReceivedBytes(System.currentTimeMillis());
         }
         return clusterInfo;
