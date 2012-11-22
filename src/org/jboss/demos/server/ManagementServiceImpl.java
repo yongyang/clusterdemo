@@ -117,4 +117,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
         return clusterNodes;
     }
 
+    public boolean invokeOperation(String name, String ip, String[] parameters) throws Exception {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

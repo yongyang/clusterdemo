@@ -126,7 +126,6 @@ public class ClusterDemo implements EntryPoint {
             public void onMouseOut(MouseOutEvent event) {
                 mouseX = -200;
                 mouseY = -200;
-                textBox.setText("");
             }
         });
 
@@ -184,6 +183,8 @@ public class ClusterDemo implements EntryPoint {
 
         // draw image to bufferContext2d
         nodeGroup.draw(bufferContext2d,  mouseX, mouseY);
+        // draw bufferContext2d to front
+        context2d.drawImage(bufferContext2d.getCanvas(), 0, 0);
 
         // update current node info to textbox
         Node node = nodeGroup.getCurrentNode();
@@ -193,12 +194,6 @@ public class ClusterDemo implements EntryPoint {
                 textBox.setValue(value);
             }
         }
-        else {
-            textBox.setValue("");
-        }
-
-        // draw bufferContext2d to front
-        context2d.drawImage(bufferContext2d.getCanvas(), 0, 0);
 
     }
 

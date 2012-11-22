@@ -11,4 +11,6 @@ import java.util.List;
 public interface ManagementServiceAsync {
 
     void getClusterInfo(String input, AsyncCallback<List<ClusterNode>> callback) throws IllegalArgumentException;
+
+    void invokeOperation(String name, String ip, String[] parameters, AsyncCallback<Boolean> callback) throws Exception;
 }
