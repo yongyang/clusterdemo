@@ -61,7 +61,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
 
         count++;
 
-        if(count == 20) { // test add
+        if(count == 10) { // test add
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
             node.setPort(8888);

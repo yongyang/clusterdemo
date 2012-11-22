@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -82,21 +81,9 @@ public class NodeGroup {
             return ;
         }
 
-/*
-        while (inDrawing) {
-            Timer sleepTimer = new Timer() {
-                @Override
-                public void run() {
-
-                }
-            };
-            sleepTimer.schedule(5);
-        }
-*/
-
         inUpdating = true;
         Map<String, Node> newNodesMap = new HashMap<String, Node>();
-        for(ClusterNode clusterNode : clusterNodes) {
+        for(ClusterNode clusterNode : clusterNodes) { // look new get clusterNodes
             String id = clusterNode.getIdentity();
             if(nodesMap.containsKey(id)) {
                 Node node = nodesMap.remove(id);
@@ -113,7 +100,9 @@ public class NodeGroup {
         for(Node node : nodesMap.values()){
             String id = node.getIdentity();
             node.setRemoving();
-            newNodesMap.put(id, node);
+            if(!node.isRemoved()) { // if is time to to remove, remove it, else re-put
+                newNodesMap.put(id, node);
+            }
         }
         nodesMap.clear();
         nodesMap.putAll(newNodesMap);
@@ -137,6 +126,7 @@ public class NodeGroup {
         List<Node> nodes = new ArrayList<Node>(nodesMap.values());
 
 
+/*
         for(Iterator<Node> it = nodes.iterator(); it.hasNext(); ){
             Node node = it.next();
             //TODO: remove ones can be removed now
@@ -146,6 +136,7 @@ public class NodeGroup {
             }
 
         }
+*/
 
         Collections.sort(nodes, new Comparator<Node>() {
             public int compare(Node o1, Node o2) {

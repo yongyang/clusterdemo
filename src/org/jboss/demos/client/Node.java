@@ -12,14 +12,15 @@ class Node {
 
     private ClusterNode clusterNode;
 
-    // 2s
-    private long lastForStatusChange = 5000;
+    // 3s
+    private long lastForStatusChange = 3000;
     private long newStart = 0;
     private long removeStart = 0;
 
     private static final String STATUS_STARTING = "STARTING";
     private static final String STATUS_OK = "OK";
     private static final String STATUS_REMOVING = "REMOVING";
+    private static final String STATUS_REMOVED = "REMOVED";
     private static final String STATUS_RELOADING = "RESTARTING";
 
     private String status = STATUS_OK;
@@ -49,50 +50,56 @@ class Node {
 
         //TODO: do all status change here!!!
 
-        if(this.clusterNode.getReceivedBytes() < clusterNode.getReceivedBytes()){
-            this.isReceiving = true;
+        if(status.equals(STATUS_STARTING)) {
+            if(System.currentTimeMillis() - newStart  > lastForStatusChange) {
+                status = STATUS_OK;
+                removeStart = 0;
+            }
         }
-/*
-        if(status.equals(STATUS_REMOVING)) { // re-loading
+        else if(status.equals(STATUS_REMOVING)) { // new update in Removing, means restarting, otherwise never get update for node in removing
+            status = STATUS_RELOADING;
             removeStart = 0;
             newStart = System.currentTimeMillis();
-            this.status = STATUS_STARTING;
         }
-*/
+        else if(status.equals(STATUS_RELOADING)){
+            if(System.currentTimeMillis() - newStart  > lastForStatusChange - 1000) { // reloading for 2s, so can switch to STARTING status
+                status = STATUS_STARTING;
+                removeStart = 0;
+            }
+        }
+
+
+        if(this.clusterNode.getReceivedBytes() < clusterNode.getReceivedBytes()){
+            this.isReceiving = true;
+            receivingStart = System.currentTimeMillis();
+        }
 
         this.clusterNode = clusterNode;
-        // new ???
     }
 
-    public void setRemoving() {
+    public void setRemoving() { // set REMOVING status or update status to REMOVED
         if(!status.equals(STATUS_REMOVING)) {
             // avoid set removed repeatedly, so the removeStart reset
             removeStart = System.currentTimeMillis();
             status = STATUS_REMOVING;
         }
+        else {
+            if(System.currentTimeMillis() - removeStart  > lastForStatusChange) {
+                status = STATUS_REMOVED;
+            }
+        }
     }
 
     public boolean isRemoving() {
-        if(!status.equals(STATUS_REMOVING)) {
-            return false;
-        }
-        return System.currentTimeMillis() - removeStart  < lastForStatusChange;
+        return status.equals(STATUS_REMOVING);
     }
 
     public boolean isStarting(){
-        boolean newing =  System.currentTimeMillis() - newStart  < lastForStatusChange;
-        if(!newing) {
-            if(status.equals(STATUS_STARTING)) {
-                status = STATUS_OK;
-            }
-            return false;
-        }
-        return true;
+        return status.equals(STATUS_STARTING);
     }
 
-    //TODO: if reload, it's to fast for removing and newing to show on UI ????
     public boolean isReloading() {
-        return (removeStart < newStart) && isRemoving() && isStarting();
+        return status.equals(STATUS_RELOADING);
     }
 
     public boolean isReceiving() {
@@ -105,11 +112,8 @@ class Node {
         return isReceiving;
     }
 
-    public boolean isTimeToRemove(){
-        if(!status.equals(STATUS_REMOVING)) {
-            return false;
-        }
-        return removeStart !=0 && System.currentTimeMillis() - removeStart  > lastForStatusChange;
+    public boolean isRemoved(){
+        return status.equals(STATUS_REMOVED);
     }
 
 
