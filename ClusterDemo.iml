@@ -98,6 +98,7 @@
     <orderEntry type="library" name="jboss-as-server-7.1.1.Final" level="project" />
     <orderEntry type="library" name="jboss-msc-1.0.2.GA" level="project" />
     <orderEntry type="library" name="jboss-client" level="project" />
+    <orderEntry type="library" name="gwt-servlet" level="project" />
   </component>
 </module>
 

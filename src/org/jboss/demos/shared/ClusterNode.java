@@ -10,8 +10,6 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>{
     private String ip;
     private int port;
 
-    private long receivedBytes = 0;
-
     public ClusterNode() {
 
     }
@@ -30,14 +28,6 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>{
 
     public int getPort() {
         return port;
-    }
-
-    public long getReceivedBytes() {
-        return receivedBytes;
-    }
-
-    public void setReceivedBytes(long receivedBytes) {
-        this.receivedBytes = receivedBytes;
     }
 
     public String getIdentity() {

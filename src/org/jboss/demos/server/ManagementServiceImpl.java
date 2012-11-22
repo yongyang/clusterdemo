@@ -57,14 +57,12 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
             node.setPort(9000 + i);
-            node.setReceivedBytes(0);
             clusterNodes.add(node);
         }
     }
 
 
-/*
-    public List<ClusterNode> getClusterInfo(String input) {
+    public ClusterInfo getClusterInfo(String targetNodeIp) {
 
         JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
         List<Address> members = channel.getView().getMembers();
@@ -72,17 +70,22 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>(members.size());
         for(Address address : members){
             IpAddress ipAddress = (IpAddress)channel.down(new Event(Event.GET_PHYSICAL_ADDRESS, address));
-            ClusterNode node = new ClusterNode(ipAddress.getIpAddress().getHostAddress(), ipAddress.getPort());
-
+            ClusterNode node = new ClusterNode();
+            node.setIp(ipAddress.getIpAddress().getHostAddress());
+            node.setPort(ipAddress.getPort());
             // TODO: get the status of recivedBytes: channel.getReceivedBytes();
             clusterNodes.add(node);
         }
 
-        return clusterNodes;
+        ClusterInfo clusterInfo = new ClusterInfo();
+        clusterInfo.setClusterNodes(clusterNodes);
+        clusterInfo.setReceivedBytes(channel.getReceivedBytes());
+
+        return clusterInfo;
     }
-*/
 
     // for mock test
+/*
     public ClusterInfo getClusterInfo(String targetNodeIp) {
 
         count++;
@@ -146,6 +149,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         }
         return clusterInfo;
     }
+*/
 
     public boolean invokeOperation(String ip, String name,  String[] parameters) {
 //        return false;

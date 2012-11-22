@@ -19,7 +19,9 @@
             <element id="module-output" name="ClusterDemo" />
           </element>
           <element id="directory" name="lib">
-            <element id="library" level="project" name="gwt-2..5.0" />
+            <element id="library" level="project" name="httpcore-4.2.2" />
+            <element id="library" level="project" name="jgroups-3.0.6.Final" />
+            <element id="library" level="project" name="gwt-servlet" />
           </element>
         </element>
         <element id="gwt-compiler-output" facet="ClusterDemo/gwt/GWT" />
@@ -419,7 +421,6 @@
     <library name="gwt-servlet">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet.jar!/" />
-        <root url="jar://$PROJECT_DIR$/../../GWT/gwt-2.5.0/gwt-servlet-deps.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>

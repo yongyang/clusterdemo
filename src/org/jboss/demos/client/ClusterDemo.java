@@ -56,6 +56,9 @@ public class ClusterDemo implements EntryPoint {
     public static final int width = 600;
     static final CssColor REDRAW_COLOR = CssColor.make("white");
 
+    private Timer redrawTimer;
+    private Timer updateClusterInfoTimer;
+
     /**
    * The message displayed to the user when the server cannot be reached or
    * returns an error.
@@ -228,7 +231,7 @@ public class ClusterDemo implements EntryPoint {
 
         nodeGroup = new NodeGroup(width-80, height-80, 200);
 
-        final Timer redrawTimer = new Timer() {
+        redrawTimer = new Timer() {
             @Override
             public void run() {
                 redraw();
@@ -236,13 +239,13 @@ public class ClusterDemo implements EntryPoint {
         };
         redrawTimer.scheduleRepeating(refreshRate);
 
-        final Timer updateClusterInfoTimer = new Timer() {
+        updateClusterInfoTimer = new Timer() {
             @Override
             public void run() {
                 updateClusterInfo();
             }
         };
-        updateClusterInfoTimer.scheduleRepeating(refreshRate * 40);
+        updateClusterInfoTimer.scheduleRepeating(refreshRate * 40); // 1s
 //        updateClusterInfoTimer.schedule(refreshRate * 40);
 
     }
@@ -271,7 +274,10 @@ public class ClusterDemo implements EntryPoint {
     private void updateClusterInfo() {
         managementService.getClusterInfo("", new AsyncCallback<ClusterInfo>() {
             public void onFailure(Throwable caught) {
-                GWT.log("faile to get cluster info, " + caught.getMessage());
+                redrawTimer.cancel();
+                updateClusterInfoTimer.cancel();
+                // ATTENTION: reload the host node of this GWT application will cause failure to update cluster info
+                Window.alert("fail to update cluster info, " + caught.getMessage());
             }
 
             public void onSuccess(ClusterInfo result) {

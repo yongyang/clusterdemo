@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ClusterDemo:Web exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list id="696b731a-4c2d-4eef-8dcd-e6079dbf87c0" name="Default" comment="Add AS7ClusterView" />
-    <list default="true" id="9d13dc51-4026-430b-9a9a-4a312702631e" name="no IDEA files" comment="no IDEA files">
+    <list default="true" id="9d13dc51-4026-430b-9a9a-4a312702631e" name="no IDEA files" comment="reload shutdown worked">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClusterDemo.iml" afterPath="$PROJECT_DIR$/ClusterDemo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterdemo.ipr" afterPath="$PROJECT_DIR$/clusterdemo.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clusterdemo.iws" afterPath="$PROJECT_DIR$/clusterdemo.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/war/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/war/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" afterPath="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" />
     </list>
     <ignored path="clusterdemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,31 +102,26 @@
       <file leaf-file-name="ClusterDemo.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="44" selection-start="4385" selection-end="4385" vertical-scroll-proportion="-3.5333333">
+            <state line="278" column="116" selection-start="10195" selection-end="10195" vertical-scroll-proportion="0.5">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3178#4724#0" expanded="true" />
-                <element signature="e#3801#4019#0" expanded="true" />
-                <element signature="e#3992#3993#0" expanded="true" />
-                <element signature="e#4241#4459#0" expanded="true" />
-                <element signature="e#4432#4433#0" expanded="true" />
-                <element signature="e#4713#4714#0" expanded="true" />
-                <element signature="e#4767#6324#0" expanded="true" />
-                <element signature="e#5394#5614#0" expanded="true" />
-                <element signature="e#5587#5588#0" expanded="true" />
-                <element signature="e#5837#6057#0" expanded="true" />
-                <element signature="e#6030#6031#0" expanded="true" />
-                <element signature="e#6313#6314#0" expanded="true" />
+                <element signature="e#3252#4798#0" expanded="true" />
+                <element signature="e#3875#4093#0" expanded="true" />
+                <element signature="e#4066#4067#0" expanded="true" />
+                <element signature="e#4315#4533#0" expanded="true" />
+                <element signature="e#4506#4507#0" expanded="true" />
+                <element signature="e#4787#4788#0" expanded="true" />
+                <element signature="e#4841#6398#0" expanded="true" />
+                <element signature="e#5468#5688#0" expanded="true" />
+                <element signature="e#5661#5662#0" expanded="true" />
+                <element signature="e#5911#6131#0" expanded="true" />
+                <element signature="e#6104#6105#0" expanded="true" />
+                <element signature="e#6387#6388#0" expanded="true" />
+                <element signature="e#8622#8739#0" expanded="true" />
+                <element signature="e#8728#8729#0" expanded="true" />
+                <element signature="e#8827#8955#0" expanded="true" />
+                <element signature="e#8944#8945#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleDispatcher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/org/jboss/dmr/SimpleDispatcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1949" selection-end="2104" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -140,10 +138,29 @@
       <file leaf-file-name="ManagementServiceImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="175" column="66" selection-start="6061" selection-end="6061" vertical-scroll-proportion="0.0">
+            <state line="59" column="0" selection-start="2196" selection-end="2196" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#1495#1522#0" expanded="true" />
+                <element signature="e#2593#2606#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="42" selection-start="2349" selection-end="2349" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClusterNode.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -211,15 +228,15 @@
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ClientClusterNode.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/Cluster.java" />
         <option value="$PROJECT_DIR$/ClusterDemo.iml" />
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterInfo.java" />
-        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" />
         <option value="$PROJECT_DIR$/test/org/jboss/demos/client/ClusterDemoTest.java" />
         <option value="$PROJECT_DIR$/war/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/NodeGroup.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementServiceAsync.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ManagementService.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/org/jboss/demos/client/Node.java" />
         <option value="$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java" />
       </list>
     </option>
@@ -492,7 +509,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="292" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="292" />
@@ -765,7 +782,11 @@
       <created>1353566583311</created>
       <updated>1353566583311</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="reload shutdown worked">
+      <created>1353569136475</created>
+      <updated>1353569136475</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -783,14 +804,14 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21396397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995495" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32995495" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20556745" sideWeight="0.6993243" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3006757" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20556745" sideWeight="0.670045" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3006757" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -841,7 +862,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="reload shutdown worked" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -867,6 +888,7 @@
     <MESSAGE value="add operation method" />
     <MESSAGE value="receive bytes worked" />
     <MESSAGE value="Minor fix" />
+    <MESSAGE value="reload shutdown worked" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -899,16 +921,6 @@
     <entry file="file://$PROJECT_DIR$/test/org/jboss/demos/AS7ClusterNodes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="38" selection-start="1368" selection-end="1368" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="67" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="36" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterInfo.java">
@@ -1087,30 +1099,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/server/ManagementServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="66" selection-start="6061" selection-end="6061" vertical-scroll-proportion="0.0">
+        <state line="59" column="0" selection-start="2196" selection-end="2196" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#1495#1522#0" expanded="true" />
+            <element signature="e#2593#2606#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="42" selection-start="2349" selection-end="2349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/shared/ClusterNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/jboss/demos/client/ClusterDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="44" selection-start="4385" selection-end="4385" vertical-scroll-proportion="-3.5333333">
+        <state line="278" column="116" selection-start="10195" selection-end="10195" vertical-scroll-proportion="0.5">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3178#4724#0" expanded="true" />
-            <element signature="e#3801#4019#0" expanded="true" />
-            <element signature="e#3992#3993#0" expanded="true" />
-            <element signature="e#4241#4459#0" expanded="true" />
-            <element signature="e#4432#4433#0" expanded="true" />
-            <element signature="e#4713#4714#0" expanded="true" />
-            <element signature="e#4767#6324#0" expanded="true" />
-            <element signature="e#5394#5614#0" expanded="true" />
-            <element signature="e#5587#5588#0" expanded="true" />
-            <element signature="e#5837#6057#0" expanded="true" />
-            <element signature="e#6030#6031#0" expanded="true" />
-            <element signature="e#6313#6314#0" expanded="true" />
+            <element signature="e#3252#4798#0" expanded="true" />
+            <element signature="e#3875#4093#0" expanded="true" />
+            <element signature="e#4066#4067#0" expanded="true" />
+            <element signature="e#4315#4533#0" expanded="true" />
+            <element signature="e#4506#4507#0" expanded="true" />
+            <element signature="e#4787#4788#0" expanded="true" />
+            <element signature="e#4841#6398#0" expanded="true" />
+            <element signature="e#5468#5688#0" expanded="true" />
+            <element signature="e#5661#5662#0" expanded="true" />
+            <element signature="e#5911#6131#0" expanded="true" />
+            <element signature="e#6104#6105#0" expanded="true" />
+            <element signature="e#6387#6388#0" expanded="true" />
+            <element signature="e#8622#8739#0" expanded="true" />
+            <element signature="e#8728#8729#0" expanded="true" />
+            <element signature="e#8827#8955#0" expanded="true" />
+            <element signature="e#8944#8945#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1134,7 +1165,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>GWT</last-edited>
+          <last-edited>GWT (ClusterDemo)|GWT</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1174,7 +1205,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2087912" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1194,7 +1224,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jgroups-3.0.6.Final</last-edited>
+          <last-edited>gwt-2..5.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -68,18 +68,6 @@ class Node {
             }
         }
 
-
-        if(this.clusterNode.getReceivedBytes() < clusterNode.getReceivedBytes()) { // receivedByte +
-            this.isReceiving = true;
-            receivingStart = System.currentTimeMillis();
-        }
-        else {
-            if(isReceiving && (System.currentTimeMillis() - receivingStart > lastForStatusChange)) {
-                this.isReceiving = false;
-                receivingStart = 0;
-            }
-        }
-
         this.clusterNode = clusterNode;
     }
 
