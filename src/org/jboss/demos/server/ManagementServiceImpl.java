@@ -12,6 +12,8 @@ import org.jgroups.JChannel;
 import org.jgroups.stack.IpAddress;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -61,6 +63,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
 
         count++;
 
+
         if(count == 10) { // test add
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
@@ -68,7 +71,12 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
             if(!clusterNodes.contains(node)) {
                 clusterNodes.add(node);
             }
+
+            // test receiving msg
+            clusterNodes.get(0).setReceivedBytes(System.currentTimeMillis());
+
         }
+
         if(count == 21) { // test reloading, remove/start
             ClusterNode node = new ClusterNode();
             node.setIp("127.0.0.1");
@@ -104,6 +112,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements
         if(count == 30) {
             count = 0;
         }
+        Collections.sort(clusterNodes);
         System.out.println("count: " + count);
         return clusterNodes;
     }

@@ -207,15 +207,16 @@ public class NodeGroup {
             }
 
 
-
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
             context.setFillStyle(CssColor.make("blue"));
             context.fillText(node.getIdentity(), 0, nodeImageHeight+20);
+            if(node.isReceiving()) { // receiving
+//                context.setFillStyle(CssColor.make("blue"));
+//                context.rect(0, 0, nodeImageWidth, nodeImageHeight);
+                context.fillRect(0, 0, 5, nodeImageHeight);
+            }
             context.closePath();
-
-
-
             context.restore();
         }
         inDrawing = false;

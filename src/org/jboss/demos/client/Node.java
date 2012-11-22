@@ -69,9 +69,15 @@ class Node {
         }
 
 
-        if(this.clusterNode.getReceivedBytes() < clusterNode.getReceivedBytes()){
+        if(this.clusterNode.getReceivedBytes() < clusterNode.getReceivedBytes()) { // receivedByte +
             this.isReceiving = true;
             receivingStart = System.currentTimeMillis();
+        }
+        else {
+            if(isReceiving && (System.currentTimeMillis() - receivingStart > lastForStatusChange)) {
+                this.isReceiving = false;
+                receivingStart = 0;
+            }
         }
 
         this.clusterNode = clusterNode;
@@ -103,11 +109,8 @@ class Node {
     }
 
     public boolean isReceiving() {
-        boolean receiving =  System.currentTimeMillis() - receivingStart  < lastForStatusChange;
-        if(!receiving) {
-            if(isReceiving) {
-                isReceiving = false;
-            }
+        if(isRemoving() || isRemoved()) {
+            return false;
         }
         return isReceiving;
     }
