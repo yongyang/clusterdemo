@@ -173,9 +173,9 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             String user = getServletContext().getInitParameter(MANAGEMENT_USER);
             String password = getServletContext().getInitParameter(MANAGEMENT_PASSWORD);
 
-            DefaultHttpClient httpclient = new DefaultHttpClient();
+            DefaultHttpClient httpClient = new DefaultHttpClient();
 
-            httpclient.getCredentialsProvider().setCredentials(
+            httpClient.getCredentialsProvider().setCredentials(
                     new AuthScope(AuthScope.ANY_HOST, port, "ManagementRealm"),
                     new UsernamePasswordCredentials(user, password));
 
@@ -189,7 +189,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             System.out.println(operation.toString());
 
             HttpResponse response;
-            response = httpclient.execute(httppost);
+            response = httpClient.execute(httppost);
             HttpEntity entity = response.getEntity();
 
             if (entity != null) {
@@ -209,7 +209,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
                 EntityUtils.consume(entity);
             }
 
-            httpclient.getConnectionManager().shutdown();
+            httpClient.getConnectionManager().shutdown();
         } catch (ClientProtocolException e) {
             e.printStackTrace();
             return false;
