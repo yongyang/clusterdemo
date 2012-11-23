@@ -38,6 +38,7 @@ public class NodeGroup {
 
     private final int refreshImageWidth =256;
     private final int refreshImageHeight =256;
+    private double refreshAngle = 0;
 
     private Image nodeImg;
     private boolean nodeImageLoaded;
@@ -45,7 +46,7 @@ public class NodeGroup {
     private boolean refreshImageLoaded;
     private Map<String, Node> nodesMap;
 
-    private double step;
+    private double nodeAngle = 0;
 
     volatile boolean inUpdating = false;
     volatile boolean inDrawing = false;
@@ -54,6 +55,8 @@ public class NodeGroup {
     private long receivedBytes = 0;
     private boolean isReceiving = false;
     private long receiveStart = 0;
+
+
 
     public NodeGroup(double width, double height, double radius) {
         this.width = width;
@@ -168,7 +171,7 @@ public class NodeGroup {
 
         this.currentNode = null;
         inDrawing = true;
-        step = (step + Math.PI/2.0 * 0.003);
+        nodeAngle = (nodeAngle + Math.PI/2.0 * 0.003);
 
 
         List<Node> nodes = new ArrayList<Node>(nodesMap.values());
@@ -187,8 +190,8 @@ public class NodeGroup {
 
             // update position
             double perPI = 2 * Math.PI * i / numNodes;
-            Vector goal = new Vector(width / 2 + radius * Math.cos(step + perPI),
-                    height / 2 + radius * Math.sin(step + perPI));
+            Vector goal = new Vector(width / 2 + radius * Math.cos(nodeAngle + perPI),
+                    height / 2 + radius * Math.sin(nodeAngle + perPI));
             node.setPosition(goal.getX(), goal.getY());
         }
 
@@ -256,7 +259,10 @@ public class NodeGroup {
 //          context.fillRect(0, 0, 5, nodeImageHeight);
             context.save();
 //            context.setGlobalAlpha(0.5);
-            context.drawImage((ImageElement) refreshImg.getElement().cast(), (ClusterDemo.width-refreshImageWidth)/2, (ClusterDemo.height-refreshImageHeight)/2);
+            context.translate(ClusterDemo.width/2, ClusterDemo.height/2);
+            refreshAngle += Math.PI/90;
+            context.rotate(refreshAngle);
+            context.drawImage((ImageElement) refreshImg.getElement().cast(), -refreshImageWidth / 2, -refreshImageHeight / 2);
             context.restore();
 
         }

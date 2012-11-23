@@ -219,4 +219,29 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         }
         return true;
     }
+
+    /*
+
+       // memory
+
+       ModelNode memory = new ModelNode();
+       memory.get(ADDRESS).set(address);
+       memory.get(ADDRESS).add("core-service", "platform-mbean");
+       memory.get(ADDRESS).add("type", "memory");
+       memory.get(OP).set(READ_RESOURCE_OPERATION);
+       memory.get(INCLUDE_RUNTIME).set(true);
+
+       steps.add(memory);
+
+       // threads
+
+       ModelNode threads = new ModelNode();
+       threads.get(ADDRESS).set(address);
+       threads.get(ADDRESS).add("core-service", "platform-mbean");
+       threads.get(ADDRESS).add("type", "threading");
+       threads.get(OP).set(READ_RESOURCE_OPERATION);
+       threads.get(INCLUDE_RUNTIME).set(true);
+
+    */
+
 }
