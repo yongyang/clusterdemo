@@ -1,14 +1,18 @@
 package org.jboss.demos.shared;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
+
 import java.io.Serializable;
 
 /**
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
  * @create 11/15/12 8:54 AM
  */
-public class ClusterNode implements Serializable, Comparable<ClusterNode>{
+public class ClusterNode implements Serializable, Comparable<ClusterNode>, IsSerializable {
     private String ip;
     private int port;
+
+    private double memUsage = 0;
 
     public ClusterNode() {
 
@@ -28,6 +32,14 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>{
 
     public int getPort() {
         return port;
+    }
+
+    public double getMemUsage() {
+        return memUsage;
+    }
+
+    public void setMemUsage(double memUsage) {
+        this.memUsage = memUsage;
     }
 
     public String getIdentity() {

@@ -68,7 +68,12 @@ class Node {
             }
         }
 
+        if(clusterNode.getMemUsage() == 0) {
+            clusterNode.setMemUsage(this.clusterNode.getMemUsage());
+
+        }
         this.clusterNode = clusterNode;
+
     }
 
     public void setRemoving() { // set REMOVING status or update status to REMOVED

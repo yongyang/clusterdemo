@@ -35,6 +35,9 @@ import java.util.List;
 
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.MODEL_DESCRIPTION;
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.OP;
+import static org.jboss.demos.server.dmr.ModelDescriptionConstants.ADDRESS;
+import static org.jboss.demos.server.dmr.ModelDescriptionConstants.READ_RESOURCE_OPERATION;
+import static org.jboss.demos.server.dmr.ModelDescriptionConstants.INCLUDE_RUNTIME;
 
 /**
  * The server side implementation of the RPC service.
@@ -47,7 +50,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
     public static final String MANAGEMENT_PASSWORD = "MANAGEMENT_PASSWORD";
     public static final String APPLICATION_DMR_ENCODED = "application/dmr-encoded";
 
-    private int count = 0;
+    private long count = 0;
 
     List<ClusterNode> clusterNodes;
     {
@@ -74,6 +77,11 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             node.setIp(ipAddress.getIpAddress().getHostAddress());
             node.setPort(ipAddress.getPort());
             // TODO: get the status of recivedBytes: channel.getReceivedBytes();
+            if(count % 5 == 0) { // every 5
+                double usage = getMemoryUsage(node.getIp());
+                System.out.println("usage: " + usage);
+                node.setMemUsage(usage);
+            }
             clusterNodes.add(node);
         }
 
@@ -81,6 +89,7 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         clusterInfo.setClusterNodes(clusterNodes);
         clusterInfo.setReceivedBytes(channel.getReceivedBytes());
 
+        count++;
         return clusterInfo;
     }
 
@@ -152,9 +161,12 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 */
 
     public boolean invokeOperation(String ip, String name,  String[] parameters) {
-//        return false;
+        ModelNode operation = new ModelNode();
+        operation.get(OP).set(name);
+        operation.get(ModelDescriptionConstants.ADDRESS).add("/");
+
         try {
-            return invokeOperationByHttp(ip, name);
+            return !invokeOperationByHttp(ip, operation).isFailure();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -162,18 +174,15 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         }
     }
 
-    private boolean invokeOperationByHttp(String ip, String operationName) throws IOException {
-        ModelNode operation = new ModelNode();
-        operation.get(OP).set(operationName);
-        operation.get(ModelDescriptionConstants.ADDRESS).add("/");
+    private ModelNode invokeOperationByHttp(String ip, ModelNode operModelNode) throws Exception {
 
+        DefaultHttpClient httpClient = new DefaultHttpClient();
         try {
 
             int port = Integer.parseInt(getServletContext().getInitParameter(MANAGEMENT_PORT).trim());
             String user = getServletContext().getInitParameter(MANAGEMENT_USER);
             String password = getServletContext().getInitParameter(MANAGEMENT_PASSWORD);
 
-            DefaultHttpClient httpClient = new DefaultHttpClient();
 
             httpClient.getCredentialsProvider().setCredentials(
                     new AuthScope(AuthScope.ANY_HOST, port, "ManagementRealm"),
@@ -181,19 +190,19 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 
             //private String domainApiUrl = "http://localhost:9990/management";
             HttpPost httppost = new HttpPost("http://" + ip + ":" + port + "/management");
-            httppost.setEntity(new StringEntity(operation.toBase64String()));
+            httppost.setEntity(new StringEntity(operModelNode.toBase64String()));
             httppost.setHeader("Accept", APPLICATION_DMR_ENCODED);
             httppost.setHeader("Content-Type", APPLICATION_DMR_ENCODED);
 
-            System.out.println("executing request " + httppost.getRequestLine() + ", " + Arrays.toString(httppost.getAllHeaders()));
-            System.out.println(operation.toString());
+//            System.out.println("executing request " + httppost.getRequestLine() + ", " + Arrays.toString(httppost.getAllHeaders()));
+//            System.out.println(operModelNode.toString());
 
             HttpResponse response;
             response = httpClient.execute(httppost);
             HttpEntity entity = response.getEntity();
 
             if (entity != null) {
-                System.out.println("Response content length: " + entity.getContentLength());
+//                System.out.println("Response content length: " + entity.getContentLength());
                 BufferedReader in = new BufferedReader(new InputStreamReader(entity.getContent()));
 
                 StringBuffer sb = new StringBuffer();
@@ -202,22 +211,18 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
                     sb.append(s);
                 }
 
-                System.out.println(ModelNode.fromBase64(sb.toString()).toString());
-
-            }
-            if (entity != null) {
                 EntityUtils.consume(entity);
-            }
 
-            httpClient.getConnectionManager().shutdown();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-            return false;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+                ModelNode returnModelNode = ModelNode.fromBase64(sb.toString());
+//                System.out.println(returnModelNode.toString());
+                return returnModelNode;
+
+            }
+            return null;
         }
-        return true;
+        finally {
+            httpClient.getConnectionManager().shutdown();
+        }
     }
 
     /*
@@ -244,4 +249,28 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 
     */
 
+
+    private double getMemoryUsage(String ip){
+        ModelNode memory = new ModelNode();
+        memory.get(ADDRESS).set(new ModelNode());
+        memory.get(ADDRESS).add("core-service", "platform-mbean");
+        memory.get(ADDRESS).add("type", "memory");
+        memory.get(OP).set(READ_RESOURCE_OPERATION);
+        memory.get(INCLUDE_RUNTIME).set(true);
+        try {
+            ModelNode resultModelNode = invokeOperationByHttp(ip, memory);
+            double used = resultModelNode.get("result").get("heap-memory-usage").get("used").asDouble();
+            double max = resultModelNode.get("result").get("heap-memory-usage").get("max").asDouble();
+            return used/max;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static void main(String[] args) throws Exception{
+        ManagementServiceImpl ms = new ManagementServiceImpl();
+        ms.getMemoryUsage("127.0.0.1");
+    }
 }

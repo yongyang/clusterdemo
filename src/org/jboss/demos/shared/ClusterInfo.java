@@ -1,5 +1,7 @@
 package org.jboss.demos.shared;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * @author <a href="mailto:yyang@redhat.com">Yong Yang</a>
  * @create 11/22/12 1:51 PM
  */
-public class ClusterInfo implements Serializable {
+public class ClusterInfo implements Serializable, IsSerializable{
     private long receivedBytes = 0;
 
     private List<ClusterNode> clusterNodes;

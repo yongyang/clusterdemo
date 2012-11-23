@@ -248,7 +248,9 @@ public class NodeGroup {
 
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
-            context.setFillStyle(CssColor.make("blue"));
+            context.setFillStyle(CssColor.make("green"));
+            // memory usage bar
+            context.fillRect(0, nodeImageHeight*(1-node.getClusterNode().getMemUsage()), 5, nodeImageHeight*node.getClusterNode().getMemUsage());
             context.fillText(node.getIdentity(), 0, nodeImageHeight+20);
             context.closePath();
             context.restore();
