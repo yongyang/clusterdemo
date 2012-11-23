@@ -26,9 +26,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import org.jboss.demos.shared.ClusterInfo;
-import org.jboss.demos.shared.ClusterNode;
-
-import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -111,7 +108,7 @@ public class ClusterDemo implements EntryPoint {
                             }
                         }.schedule(2000);
 
-                        Window.alert("fail to invoke operation reload, " + caught.getMessage());
+                        Window.alert("Fail to invoke operation reload, " + caught.getMessage());
                     }
 
                     public void onSuccess(Boolean result) {
@@ -123,7 +120,7 @@ public class ClusterDemo implements EntryPoint {
                         }.schedule(2000);
 
                         if (!result) {
-                            Window.alert("reload operation sent, but return false, please check server side logs!");
+                            Window.alert("Reload operation sent, but return false, please check server side logs!");
                         }
                     }
                 });
@@ -150,7 +147,7 @@ public class ClusterDemo implements EntryPoint {
                                 shutdownButton.setEnabled(true);
                             }
                         }.schedule(2000);
-                        Window.alert("fail to invoke operation shutdown, " + caught.getMessage());
+                        Window.alert("Fail to invoke operation shutdown, " + caught.getMessage());
                     }
 
                     public void onSuccess(Boolean result) {
@@ -162,7 +159,7 @@ public class ClusterDemo implements EntryPoint {
                         }.schedule(2000);
 
                         if(!result) {
-                            Window.alert("shutdown operation sent, but return false, please check server side logs!");
+                            Window.alert("Shutdown operation sent, but return false, please check server side logs!");
                         }
                     }
                 } );
@@ -174,6 +171,22 @@ public class ClusterDemo implements EntryPoint {
         RootPanel.get("cluster-operations").add(reloadButton);
         RootPanel.get("cluster-operations").add(shutdownButton);
 
+        Button consoleButton = new Button("Open Console");
+        consoleButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                String value = textBox.getValue();
+                if (value != null && !value.isEmpty()) {
+                    value = value.trim();
+                }
+                else {
+                    return;
+                }
+                String ip = value.substring(0, value.indexOf(":"));
+                Window.open("http://" + ip + ":9990/console", "_blank", "");
+            }
+        });
+
+        RootPanel.get("cluster-operations").add(consoleButton);
     }
 
     private void initCanvas() {
@@ -274,10 +287,10 @@ public class ClusterDemo implements EntryPoint {
     private void updateClusterInfo() {
         managementService.getClusterInfo("", new AsyncCallback<ClusterInfo>() {
             public void onFailure(Throwable caught) {
-                redrawTimer.cancel();
-                updateClusterInfoTimer.cancel();
+//                redrawTimer.cancel();
+//                updateClusterInfoTimer.cancel();
                 // ATTENTION: reload the host node of this GWT application will cause failure to update cluster info
-                Window.alert("fail to update cluster info, " + caught.getMessage());
+                Window.alert("Fail to update cluster info, " + caught.getMessage());
             }
 
             public void onSuccess(ClusterInfo result) {
