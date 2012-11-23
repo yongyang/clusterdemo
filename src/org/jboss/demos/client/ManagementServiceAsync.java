@@ -2,9 +2,6 @@ package org.jboss.demos.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.jboss.demos.shared.ClusterInfo;
-import org.jboss.demos.shared.ClusterNode;
-
-import java.util.List;
 
 /**
  * The async counterpart of <code>GreetingService</code>.

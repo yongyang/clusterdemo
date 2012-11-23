@@ -7,6 +7,7 @@ import com.google.gwt.canvas.dom.client.ImageData;
 import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.demos.shared.ClusterInfo;
@@ -217,7 +218,6 @@ public class NodeGroup {
                 context.setShadowColor("black");
             }
 
-            //TODO: How to blink, blink with yellow blue, remove with Alpha
             //Removing
             if(node.isRemoving()) {
                 context.setShadowOffsetX(5);
@@ -229,7 +229,6 @@ public class NodeGroup {
 
             //Starting
             if(node.isStarting()) {
-                //TODO: blink green or scale in
                 context.setShadowOffsetX(5);
                 context.setShadowOffsetY(5);
                 context.setShadowBlur(50);
@@ -248,9 +247,40 @@ public class NodeGroup {
 
             context.translate(node.getPosition().getX(), node.getPosition().getY());
             context.drawImage((ImageElement) nodeImg.getElement().cast(), 0, 0);
-            context.setFillStyle(CssColor.make("green"));
+
             // memory usage bar
-            context.fillRect(0, nodeImageHeight*(1-node.getClusterNode().getMemUsage()), 5, nodeImageHeight*node.getClusterNode().getMemUsage());
+            double memUsage = node.getClusterNode().getMemUsage();
+            if(memUsage < 0.3) {
+                context.setFillStyle(CssColor.make("green"));
+            }
+            else if(memUsage < 0.6) {
+                context.setFillStyle(CssColor.make("orange"));
+            }
+            else {
+                context.setFillStyle(CssColor.make("red"));
+            }
+            context.fillRect(0, nodeImageHeight*(1-memUsage), 5, nodeImageHeight*memUsage);
+
+            // thread usage bar
+            double threadUsage = node.getClusterNode().getThreadUsage();
+            if(threadUsage < 0.3) {
+                context.setFillStyle(CssColor.make("green"));
+            }
+            else if(threadUsage < 0.6) {
+                context.setFillStyle(CssColor.make("orange"));
+            }
+            else {
+                context.setFillStyle(CssColor.make("red"));
+            }
+            context.fillRect(nodeImageWidth-5, nodeImageHeight*(1-threadUsage), 5, nodeImageHeight*threadUsage);
+            // ip
+            context.setFillStyle(CssColor.make("blue"));
+            if(node.equals(currentNode)) {
+                // show percentage on current node
+                NumberFormat numberFormat = NumberFormat.getPercentFormat();
+                context.fillText(numberFormat.format(memUsage),  1, 8);
+                context.fillText(numberFormat.format(threadUsage),  nodeImageWidth-20, 8);
+            }
             context.fillText(node.getIdentity(), 0, nodeImageHeight+20);
             context.closePath();
             context.restore();

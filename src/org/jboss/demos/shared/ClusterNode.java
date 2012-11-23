@@ -12,7 +12,8 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>, IsSer
     private String ip;
     private int port;
 
-    private double memUsage = 0;
+    private double memUsage = 0f;
+    private double threadUsage = 0f;
 
     public ClusterNode() {
 
@@ -40,6 +41,14 @@ public class ClusterNode implements Serializable, Comparable<ClusterNode>, IsSer
 
     public void setMemUsage(double memUsage) {
         this.memUsage = memUsage;
+    }
+
+    public double getThreadUsage() {
+        return threadUsage;
+    }
+
+    public void setThreadUsage(double threadUsage) {
+        this.threadUsage = threadUsage;
     }
 
     public String getIdentity() {

@@ -76,11 +76,13 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             ClusterNode node = new ClusterNode();
             node.setIp(ipAddress.getIpAddress().getHostAddress());
             node.setPort(ipAddress.getPort());
-            // TODO: get the status of recivedBytes: channel.getReceivedBytes();
             if(count % 5 == 0) { // every 5
-                double usage = getMemoryUsage(node.getIp());
-                System.out.println("usage: " + usage);
-                node.setMemUsage(usage);
+                double memoryUsage = getMemoryUsage(node.getIp());
+//                System.out.println("mem usage: " + memoryUsage);
+                node.setMemUsage(memoryUsage);
+                double threadUsage = getThreadUsage(node.getIp());
+//                System.out.println("thread usage: " + threadUsage);
+                node.setThreadUsage(threadUsage);
             }
             clusterNodes.add(node);
         }
@@ -262,6 +264,25 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             double used = resultModelNode.get("result").get("heap-memory-usage").get("used").asDouble();
             double max = resultModelNode.get("result").get("heap-memory-usage").get("max").asDouble();
             return used/max;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    private double getThreadUsage(String ip){
+        ModelNode thread = new ModelNode();
+        thread.get(ADDRESS).set(new ModelNode());
+        thread.get(ADDRESS).add("core-service", "platform-mbean");
+        thread.get(ADDRESS).add("type", "threading");
+        thread.get(OP).set(READ_RESOURCE_OPERATION);
+        thread.get(INCLUDE_RUNTIME).set(true);
+        try {
+            ModelNode resultModelNode = invokeOperationByHttp(ip, thread);
+            double daemon = resultModelNode.get("result").get("daemon-thread-count").asDouble();
+            double count = resultModelNode.get("result").get("thread-count").asDouble();
+            return daemon/count;
         }
         catch (Exception e) {
             e.printStackTrace();

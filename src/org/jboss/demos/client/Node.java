@@ -48,7 +48,7 @@ class Node {
 
     public void updateNodeInfo(ClusterNode clusterNode) {
 
-        //TODO: do all status change here!!!
+        // do all status change here!!!
 
         if(status.equals(STATUS_STARTING)) {
             if(System.currentTimeMillis() - newStart  > lastForStatusChange) {
@@ -68,12 +68,15 @@ class Node {
             }
         }
 
+        // update mem&thread usage
         if(clusterNode.getMemUsage() == 0) {
             clusterNode.setMemUsage(this.clusterNode.getMemUsage());
 
         }
+        if(clusterNode.getThreadUsage() == 0) {
+            clusterNode.setThreadUsage(this.clusterNode.getThreadUsage());
+        }
         this.clusterNode = clusterNode;
-
     }
 
     public void setRemoving() { // set REMOVING status or update status to REMOVED
