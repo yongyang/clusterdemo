@@ -267,6 +267,7 @@ public class ClusterDemo implements EntryPoint {
         // reset bufferContext2d
         bufferContext2d.setFillStyle(REDRAW_COLOR);
         bufferContext2d.fillRect(0, 0, width, height);
+//        bufferContext2d.clearRect(0, 0, width, height);
 
         // draw image to bufferContext2d
         nodeGroup.draw(bufferContext2d,  mouseX, mouseY);
