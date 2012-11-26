@@ -18,6 +18,20 @@
     <maven.compiler.target>1.6</maven.compiler.target>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>jboss-nexus-repository</id>
+      <name>JBoss Deprecated Maven Repository</name>
+      <!--<url>https://repository.jboss.org/nexus/content/repositories/deprecated/</url>-->
+      <url>https://repository.jboss.org/nexus/content/groups/developer/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -56,20 +70,43 @@
       <classifier>sources</classifier>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.jgroups</groupId>
+      <artifactId>jgroups</artifactId>
+      <version>3.0.6.Final</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <version>4.1.2</version>
+      <artifactId>httpclient</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.as</groupId>
+      <artifactId>jboss-as-server</artifactId>
+      <version>7.0.2.Final</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
   
   <build>
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
     <!-- Generate compiled stuff in the folder used for developing mode --> 
     <outputDirectory>target/www/WEB-INF/classes</outputDirectory>
     
     <plugins>
-      
+
       <!-- GWT Maven Plugin-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-	<version>2.2.0</version>
-	<dependencies>
+        <version>2.2.0</version>
+        <dependencies>
           <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
@@ -85,7 +122,7 @@
             <artifactId>gwt-servlet</artifactId>
             <version>${gwtVersion}</version>
           </dependency>
-	</dependencies>
+        </dependencies>
         <!-- JS is only needed in the package phase, this speeds up testing --> 
         <executions>
           <execution>
@@ -108,9 +145,10 @@
       </plugin>
 
       <!-- Add source folders to test classpath in order to run gwt-tests as normal junit-tests -->
+<!--
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-	<version>2.5</version>
+        <version>2.5</version>
         <configuration>
           <additionalClasspathElements>
             <additionalClasspathElement>${project.build.sourceDirectory}</additionalClasspathElement>
@@ -119,7 +157,7 @@
           <useManifestOnlyJar>false</useManifestOnlyJar>
           <forkMode>always</forkMode>
 
-          <!-- Folder for generated testing stuff --> 
+          &lt;!&ndash; Folder for generated testing stuff &ndash;&gt;
           <systemProperties>
             <property>
               <name>gwt.args</name>
@@ -128,7 +166,8 @@
           </systemProperties>
         </configuration>
       </plugin>
-      
+-->
+
       <!-- Copy static web files before executing gwt:run -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
@@ -154,11 +193,11 @@
       <!-- Delete gwt generated stuff -->
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-	<version>2.3</version>
+        <version>2.3</version>
         <configuration>
           <filesets>
-            <fileset><directory>src/main/webapp/clusterdemo</directory></fileset>
-            <fileset><directory>src/main/webapp/WEB-INF/classes</directory></fileset>
+            <!--<fileset><directory>src/main/webapp/clusterdemo</directory></fileset>-->
+            <!--<fileset><directory>src/main/webapp/WEB-INF/classes</directory></fileset>-->
             <fileset><directory>tomcat</directory></fileset>
             <fileset><directory>www-test</directory></fileset>
             <fileset><directory>.gwt-tmp</directory></fileset>
@@ -167,21 +206,25 @@
       </plugin>
 
       <plugin>
-	<artifactId>maven-eclipse-plugin</artifactId>
-	<version>2.7</version>  <!--  Note 2.8 does not work with AspectJ aspect path -->
-	<configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>false</downloadJavadocs>
-          <wtpversion>2.0</wtpversion>
-          <additionalBuildcommands>
-            <buildCommand>
-              <name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
-            </buildCommand>
-          </additionalBuildcommands>
-          <additionalProjectnatures>
-            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-          </additionalProjectnatures>
-	</configuration>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warName>clusterdemo</warName>
+          <outputFileNameMapping>@{artifactId}@-@{baseVersion}@.@{extension}@</outputFileNameMapping>
+          <!--<packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>-->
+
+          <webResources>
+            <resource>
+              <!-- this is relative to the pom.xml directory -->
+              <!--<directory>src/${webDescriptor}</directory>-->
+              <directory>war</directory>
+            </resource>
+          </webResources>
+          <archive>
+            <manifestEntries>
+              <Dependencies>org.jboss.as.server,org.jboss.msc,org.jgroups,org.apache.httpcomponents</Dependencies>
+            </manifestEntries>
+          </archive>
+        </configuration>
       </plugin>
 
     </plugins>
