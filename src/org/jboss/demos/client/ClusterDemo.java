@@ -196,8 +196,8 @@ public class ClusterDemo implements EntryPoint {
         dialogContents.setSpacing(4);
         dialogContents.add(new HTML("&nbsp;Green lighting: Starting"));
         dialogContents.add(new HTML("Yellow lighting: Reloading"));
-        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;Red lighting: Shutdowning"));
-        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Left bar: Memory usage"));
+        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;Red lighting: Shutdowning"));
+        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Left bar: Memory usage"));
         dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Right bar: Thread usage"));
         dialogContents.add(new HTML("&nbsp;Bar color <30%: Green"));
         dialogContents.add(new HTML("&nbsp;Bar color <60%: Orange"));

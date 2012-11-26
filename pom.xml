@@ -135,6 +135,7 @@
         <!-- Plugin configuration. There are many available options, 
              see gwt-maven-plugin documentation at codehaus.org --> 
         <configuration>
+          <extraJvmArgs>-Xmx512m</extraJvmArgs>
           <!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
           <runTarget>ClusterDemo.html</runTarget>
           <!-- Location of the develop-mode web application structure (gwt:run). -->
