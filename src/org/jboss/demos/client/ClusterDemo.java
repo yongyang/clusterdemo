@@ -22,9 +22,12 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import org.jboss.demos.shared.ClusterInfo;
 
 /**
@@ -38,9 +41,11 @@ public class ClusterDemo implements EntryPoint {
     Canvas bufferCanvas;
     Context2d bufferContext2d;
 
-    TextBox textBox = new TextBox();
-    Button reloadButton = new Button("Reload");
-    Button shutdownButton = new Button("Shutdown");
+    final TextBox textBox = new TextBox();
+    final Button reloadButton = new Button("Reload");
+    final Button shutdownButton = new Button("Shutdown");
+    final Button consoleButton = new Button("Open Console");
+    final Button helpButton = new Button("?");
 
     NodeGroup nodeGroup;
     // mouse positions relative to canvas
@@ -83,10 +88,12 @@ public class ClusterDemo implements EntryPoint {
       initCanvas();
 
       RootPanel.get("cluster-canvas").add(canvas);
+      textBox.setReadOnly(true);
       addButtons();
   }
 
     private void addButtons() {
+
         reloadButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 String value = textBox.getValue();
@@ -166,12 +173,6 @@ public class ClusterDemo implements EntryPoint {
             }
         });
 
-        textBox.setReadOnly(true);
-        RootPanel.get("cluster-operations").add(textBox);
-        RootPanel.get("cluster-operations").add(reloadButton);
-        RootPanel.get("cluster-operations").add(shutdownButton);
-
-        Button consoleButton = new Button("Open Console");
         consoleButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 String value = textBox.getValue();
@@ -186,7 +187,38 @@ public class ClusterDemo implements EntryPoint {
             }
         });
 
+
+        final DialogBox dialogBox = new DialogBox();
+        dialogBox.setModal(false);
+        dialogBox.setText("Help");
+        // Create a table to layout the content
+        VerticalPanel dialogContents = new VerticalPanel();
+        dialogContents.setSpacing(4);
+        dialogContents.add(new HTML("&nbsp;Green lighting: Starting"));
+        dialogContents.add(new HTML("Yellow lighting: Reloading"));
+        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;Red lighting: Shutdowning"));
+        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Left bar: Memory usage"));
+        dialogContents.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Right bar: Thread usage"));
+        dialogContents.add(new HTML("&nbsp;Bar color <30%: Green"));
+        dialogContents.add(new HTML("&nbsp;Bar color <60%: Orange"));
+        dialogContents.add(new HTML("&nbsp;Bar color >60%: Red"));
+        dialogBox.setWidget(dialogContents);
+        helpButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                if(!dialogBox.isShowing()) {
+                    dialogBox.showRelativeTo(helpButton);
+                }
+                else {
+                    dialogBox.hide();
+                }
+            }
+        });
+
+        RootPanel.get("cluster-operations").add(textBox);
+        RootPanel.get("cluster-operations").add(reloadButton);
+        RootPanel.get("cluster-operations").add(shutdownButton);
         RootPanel.get("cluster-operations").add(consoleButton);
+        RootPanel.get("cluster-operations").add(helpButton);
     }
 
     private void initCanvas() {
