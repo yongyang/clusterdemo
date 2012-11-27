@@ -54,6 +54,7 @@ public class NodeGroup {
 
     private Node currentNode = null;
     private long receivedBytes = 0;
+    private long receivedBytesIncrement = 0;
     private boolean isReceiving = false;
     private long receiveStart = 0;
 
@@ -119,6 +120,7 @@ public class NodeGroup {
 
         // set receving status
         if(clusterInfo.getReceivedBytes() > receivedBytes){
+            receivedBytesIncrement = clusterInfo.getReceivedBytes() - receivedBytes;
             receivedBytes = clusterInfo.getReceivedBytes();
             isReceiving = true;
             receiveStart = System.currentTimeMillis();
@@ -126,6 +128,7 @@ public class NodeGroup {
         else {
             if(System.currentTimeMillis() - receiveStart > lastForStatusChange) {
                 isReceiving = false;
+                receivedBytesIncrement = 0;
                 receiveStart = 0;
             }
         }
@@ -296,7 +299,14 @@ public class NodeGroup {
             context.rotate(refreshAngle);
             context.drawImage((ImageElement) refreshImg.getElement().cast(), -refreshImageWidth / 2, -refreshImageHeight / 2);
             context.restore();
-
+            context.save();
+            context.setFont("40pt sans-serif");
+            context.setFillStyle("gray");
+            context.setTextBaseline(Context2d.TextBaseline.MIDDLE);
+            String incrementText = "+" + receivedBytesIncrement + "B";
+            double textWidth = context.measureText(incrementText).getWidth();
+            context.fillText(incrementText, (ClusterDemo.width-textWidth)/2, ClusterDemo.height/2);
+            context.restore();
         }
         inDrawing = false;
     }
