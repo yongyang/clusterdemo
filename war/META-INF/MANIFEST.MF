@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Dependencies: org.jboss.as.server,org.jboss.msc,org.jgroups,org.apache.httpcomponents
+Dependencies: org.jboss.as.server,org.jboss.msc,org.jgroups,org.apache.httpcomponents,org.jboss.as.naming

@@ -17,12 +17,15 @@ import org.jboss.demos.server.dmr.ModelDescriptionConstants;
 import org.jboss.demos.server.dmr.ModelNode;
 import org.jboss.demos.shared.ClusterInfo;
 import org.jboss.demos.shared.ClusterNode;
+import org.jboss.errai.bus.client.framework.MessageBus;
+import org.jboss.errai.bus.server.annotations.Service;
 import org.jboss.msc.service.ServiceName;
 import org.jgroups.Address;
 import org.jgroups.Event;
 import org.jgroups.JChannel;
 import org.jgroups.stack.IpAddress;
 
+import javax.inject.Inject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,7 +46,9 @@ import static org.jboss.demos.server.dmr.ModelDescriptionConstants.INCLUDE_RUNTI
  * The server side implementation of the RPC service.
  */
 @SuppressWarnings("serial")
-public class ManagementServiceImpl extends RemoteServiceServlet implements ManagementService {
+@Service
+public class ManagementServiceImpl implements ManagementService {
+//public class ManagementServiceImpl extends RemoteServiceServlet implements ManagementService {
 
     public static final String MANAGEMENT_PORT = "MANAGEMENT_PORT";
     public static final String MANAGEMENT_USER = "MANAGEMENT_USER";
@@ -52,7 +57,8 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 
     private long count = 0;
 
-    List<ClusterNode> clusterNodes;
+    // for test purpose
+    private List<ClusterNode> clusterNodes;
     {
         clusterNodes = new ArrayList<ClusterNode>();
 
@@ -62,6 +68,14 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             node.setPort(9000 + i);
             clusterNodes.add(node);
         }
+    }
+
+    private MessageBus bus;
+
+    @Inject
+    public ManagementServiceImpl(MessageBus bus) {
+        System.out.println("CONSTRUCTED!!!");
+        this.bus = bus;
     }
 
 
@@ -181,9 +195,12 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         DefaultHttpClient httpClient = new DefaultHttpClient();
         try {
 
-            int port = Integer.parseInt(getServletContext().getInitParameter(MANAGEMENT_PORT).trim());
-            String user = getServletContext().getInitParameter(MANAGEMENT_USER);
-            String password = getServletContext().getInitParameter(MANAGEMENT_PASSWORD);
+//            int port = Integer.parseInt(getServletContext().getInitParameter(MANAGEMENT_PORT).trim());
+            int port = 9990;
+//            String user = getServletContext().getInitParameter(MANAGEMENT_USER);
+            String user="admin";
+//            String password = getServletContext().getInitParameter(MANAGEMENT_PASSWORD);
+            String password="123456";
 
 
             httpClient.getCredentialsProvider().setCredentials(
@@ -290,8 +307,10 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         }
     }
 
+/*
     public static void main(String[] args) throws Exception{
         ManagementServiceImpl ms = new ManagementServiceImpl();
         ms.getMemoryUsage("127.0.0.1");
     }
+*/
 }

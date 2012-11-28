@@ -3,7 +3,6 @@ package org.jboss.demos.client;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.CssColor;
-import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -29,11 +28,21 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import org.jboss.demos.shared.ClusterInfo;
+import org.jboss.errai.bus.client.api.ErrorCallback;
+import org.jboss.errai.bus.client.api.Message;
+import org.jboss.errai.bus.client.api.RemoteCallback;
+import org.jboss.errai.ioc.client.api.AfterInitialization;
+import org.jboss.errai.ioc.client.api.Caller;
+import org.jboss.errai.ioc.client.api.EntryPoint;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class ClusterDemo implements EntryPoint {
+@EntryPoint
+public class ClusterDemo {
 
     private static final String upgradeMessage = "Your browser does not support the HTML5 Canvas. Please upgrade your browser to view this demo.";
     Canvas canvas;
@@ -72,12 +81,18 @@ public class ClusterDemo implements EntryPoint {
   /**
    * Create a remote service proxy to talk to the server-side Greeting service.
    */
-  private final ManagementServiceAsync managementService = GWT.create(ManagementService.class);
+  //private final ManagementServiceAsync manage?mentService = GWT.create(ManagementService.class);
+
+    @Inject
+    Caller<ManagementService> managementServiceCaller;
 
   /**
    * This is the entry point method.
    */
+  @AfterInitialization
   public void onModuleLoad() {
+      Window.alert("TEST!");
+
       canvas = Canvas.createIfSupported();
       if (canvas == null) {
           RootPanel.get().add(new Label(upgradeMessage));
@@ -106,6 +121,26 @@ public class ClusterDemo implements EntryPoint {
                 String ip = value.substring(0, value.indexOf(":"));
 
                 reloadButton.setEnabled(false);
+
+                managementServiceCaller.call(
+                        new RemoteCallback<Boolean>() {
+                            public void callback(Boolean response) {
+                                new Timer() {
+                                    @Override
+                                    public void run() {
+                                        reloadButton.setEnabled(true);
+                                    }
+                                }.schedule(2000);
+                            }
+                        },
+                        new ErrorCallback() {
+                            public boolean error(Message message, Throwable throwable) {
+                                Window.alert("Fail to invoke operation reload, " + throwable.getMessage());
+                                return false;
+                            }
+                        }).invokeOperation(ip, "reload", new String[0]);
+
+/*
                 managementService.invokeOperation(ip, "reload", new String[0], new AsyncCallback<Boolean>() {
                     public void onFailure(Throwable caught) {
                         new Timer() {
@@ -131,6 +166,7 @@ public class ClusterDemo implements EntryPoint {
                         }
                     }
                 });
+*/
             }
         });
 
@@ -146,6 +182,7 @@ public class ClusterDemo implements EntryPoint {
                 String ip = value.substring(0, value.indexOf(":"));
 
                 shutdownButton.setEnabled(false);
+/*
                 managementService.invokeOperation( ip,"shutdown", new String[0], new AsyncCallback<Boolean>() {
                     public void onFailure(Throwable caught) {
                         new Timer() {
@@ -170,6 +207,25 @@ public class ClusterDemo implements EntryPoint {
                         }
                     }
                 } );
+*/
+
+                managementServiceCaller.call(
+                        new RemoteCallback<Boolean>() {
+                            public void callback(Boolean response) {
+                                new Timer() {
+                                    @Override
+                                    public void run() {
+                                        reloadButton.setEnabled(true);
+                                    }
+                                }.schedule(2000);
+                            }
+                        },
+                        new ErrorCallback() {
+                            public boolean error(Message message, Throwable throwable) {
+                                Window.alert("Shutdown operation sent, but return false, please check server side logs!");
+                                return false;
+                            }
+                        }).invokeOperation(ip, "shutdown", new String[0]);
             }
         });
 
@@ -318,6 +374,7 @@ public class ClusterDemo implements EntryPoint {
     }
 
     private void updateClusterInfo() {
+/*
         managementService.getClusterInfo("", new AsyncCallback<ClusterInfo>() {
             public void onFailure(Throwable caught) {
 //                redrawTimer.cancel();
@@ -330,6 +387,24 @@ public class ClusterDemo implements EntryPoint {
                 nodeGroup.updateClusterInfo(result);
             }
         });
+*/
+
+        managementServiceCaller.call(
+                new RemoteCallback<ClusterInfo>() {
+                    public void callback(ClusterInfo response) {
+                        nodeGroup.updateClusterInfo(response);
+                    }
+                },
+                new ErrorCallback() {
+                    public boolean error(Message message, Throwable throwable) {
+                        Window.alert("Fail to update cluster info, " + throwable.getMessage());
+                        redrawTimer.cancel();
+                        updateClusterInfoTimer.cancel();
+                        return false;
+                    }
+                }
+
+        ).getClusterInfo("");
     }
 
 }

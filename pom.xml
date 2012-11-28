@@ -13,6 +13,7 @@
   <properties>
     <!-- Convenience property to set the GWT version -->
     <gwtVersion>2.5.0</gwtVersion>
+    <erraiVersion>2.2.0-SNAPSHOT</erraiVersion>
     <!-- GWT needs at least java 1.6 -->
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
@@ -33,6 +34,42 @@
   </repositories>
 
   <dependencies>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-common</artifactId>
+      <version>${erraiVersion}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-bus</artifactId>
+      <version>${erraiVersion}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-ioc</artifactId>
+      <version>${erraiVersion}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-weld-integration</artifactId>
+      <version>${erraiVersion}</version>
+    </dependency>
+
+      <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-cdi-client</artifactId>
+      <version>${erraiVersion}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-tools</artifactId>
+      <version>${erraiVersion}</version>
+    </dependency>
+
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
@@ -135,6 +172,7 @@
         <!-- Plugin configuration. There are many available options, 
              see gwt-maven-plugin documentation at codehaus.org --> 
         <configuration>
+          <draftCompile>true</draftCompile>
           <extraJvmArgs>-Xmx512m</extraJvmArgs>
           <!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
           <runTarget>ClusterDemo.html</runTarget>
