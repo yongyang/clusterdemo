@@ -1,5 +1,7 @@
-JBoss AS7/EAP6 Cluster Visualizer based on HTML5
-================================================
+JBoss AS7/EAP6 Cluster Visualizer
+=================================
+
+Cluster-visualizer is a view based on HTML5 to monitor JBoss AS7/EAP6 clsuter status over management api.
 
 How to install:
 
