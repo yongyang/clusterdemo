@@ -26,18 +26,23 @@ import org.jgroups.stack.IpAddress;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.MODEL_DESCRIPTION;
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.OP;
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.ADDRESS;
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.READ_RESOURCE_OPERATION;
 import static org.jboss.demos.server.dmr.ModelDescriptionConstants.INCLUDE_RUNTIME;
+import static org.jboss.demos.server.dmr.ModelDescriptionConstants.SYSTEM_PROPERTIES;
 
 /**
  * The server side implementation of the RPC service.
@@ -65,9 +70,18 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
     }
 
 
+    private final Map<String, Usage> memUsageMap = new ConcurrentHashMap<String, Usage>();
+    private final Map<String, Usage> threadUsageMap = new ConcurrentHashMap<String, Usage>();
+
     public ClusterInfo getClusterInfo(String targetNodeIp) {
 
+        System.out.println("Get cluster info!");
+        ClusterInfo clusterInfo = new ClusterInfo();
+
         JChannel channel = (JChannel) CurrentServiceContainer.getServiceContainer().getService(ServiceName.JBOSS.append("jgroups", "channel", "web")).getValue();
+
+        clusterInfo.setReceivedBytes(channel.getReceivedBytes());
+
         List<Address> members = channel.getView().getMembers();
 
         List<ClusterNode> clusterNodes = new ArrayList<ClusterNode>(members.size());
@@ -76,20 +90,18 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             ClusterNode node = new ClusterNode();
             node.setIp(ipAddress.getIpAddress().getHostAddress());
             node.setPort(ipAddress.getPort());
-            if(count % 5 == 0) { // every 5
+//            if(count % 5 == 0) { // every 5
                 double memoryUsage = getMemoryUsage(node.getIp());
 //                System.out.println("mem usage: " + memoryUsage);
                 node.setMemUsage(memoryUsage);
                 double threadUsage = getThreadUsage(node.getIp());
 //                System.out.println("thread usage: " + threadUsage);
                 node.setThreadUsage(threadUsage);
-            }
+//            }
             clusterNodes.add(node);
         }
 
-        ClusterInfo clusterInfo = new ClusterInfo();
         clusterInfo.setClusterNodes(clusterNodes);
-        clusterInfo.setReceivedBytes(channel.getReceivedBytes());
 
         count++;
         return clusterInfo;
@@ -253,6 +265,15 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
 
 
     private double getMemoryUsage(String ip){
+
+        if(memUsageMap.containsKey(ip)) {
+            Usage usage = memUsageMap.get(ip);
+            if(!usage.isTimeout()) {
+                return usage.getUsage();
+            }
+        }
+
+
         ModelNode memory = new ModelNode();
         memory.get(ADDRESS).set(new ModelNode());
         memory.get(ADDRESS).add("core-service", "platform-mbean");
@@ -263,7 +284,18 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             ModelNode resultModelNode = invokeOperationByHttp(ip, memory);
             double used = resultModelNode.get("result").get("heap-memory-usage").get("used").asDouble();
             double max = resultModelNode.get("result").get("heap-memory-usage").get("max").asDouble();
-            return used/max;
+
+            double usage = used/max;
+            Usage usageObject = memUsageMap.get(ip);
+            if(usageObject == null) {
+                usageObject = new Usage();
+                usageObject.setIp(ip);
+                usageObject.setTime(System.currentTimeMillis());
+            }
+            usageObject.setUsage(usage);
+            memUsageMap.put(ip, usageObject);
+            return usage;
+
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -271,7 +303,15 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         }
     }
 
-    private double getThreadUsage(String ip){
+    private synchronized double getThreadUsage(String ip){
+
+        if(threadUsageMap.containsKey(ip)) {
+            Usage usage = threadUsageMap.get(ip);
+            if(!usage.isTimeout()) {
+                return usage.getUsage();
+            }
+        }
+
         ModelNode thread = new ModelNode();
         thread.get(ADDRESS).set(new ModelNode());
         thread.get(ADDRESS).add("core-service", "platform-mbean");
@@ -282,7 +322,18 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
             ModelNode resultModelNode = invokeOperationByHttp(ip, thread);
             double daemon = resultModelNode.get("result").get("daemon-thread-count").asDouble();
             double count = resultModelNode.get("result").get("thread-count").asDouble();
-            return daemon/count;
+            double usage =  daemon/count;
+            Usage usageObject = threadUsageMap.get(ip);
+            if(usageObject == null) {
+                usageObject = new Usage();
+                usageObject.setIp(ip);
+                usageObject.setTime(System.currentTimeMillis());
+            }
+            usageObject.setUsage(usage);
+            threadUsageMap.put(ip, usageObject);
+            return usage;
+
+
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -293,5 +344,44 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
     public static void main(String[] args) throws Exception{
         ManagementServiceImpl ms = new ManagementServiceImpl();
         ms.getMemoryUsage("127.0.0.1");
+    }
+
+    static class Usage implements Serializable {
+        private String ip;
+        private double usage;
+        private long time;
+
+        public Usage() {
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public double getUsage() {
+            return usage;
+        }
+
+        public void setUsage(double usage) {
+            this.usage = usage;
+        }
+
+        public long getTime() {
+            return time;
+        }
+
+        public void setTime(long time) {
+            this.time = time;
+        }
+
+        public boolean isTimeout() {
+            // 10s
+            System.out.println("Timeout");
+            return System.currentTimeMillis() - getTime() > 10*1000;
+        }
     }
 }

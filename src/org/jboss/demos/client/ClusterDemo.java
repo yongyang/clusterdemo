@@ -320,10 +320,10 @@ public class ClusterDemo implements EntryPoint {
     private void updateClusterInfo() {
         managementService.getClusterInfo("", new AsyncCallback<ClusterInfo>() {
             public void onFailure(Throwable caught) {
-                redrawTimer.cancel();
-                updateClusterInfoTimer.cancel();
                 // ATTENTION: reload the host node of this GWT application will cause failure to update cluster info
                 Window.alert("Fail to update cluster info, " + caught.getMessage());
+                redrawTimer.cancel();
+                updateClusterInfoTimer.cancel();
             }
 
             public void onSuccess(ClusterInfo result) {
