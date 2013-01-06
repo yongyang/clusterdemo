@@ -188,6 +188,13 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
         }
     }
 
+    /**
+     * Call an operation by EAP6/AS7 management-api over http
+     * @param ip string ip address, EX: 192.168.1.1
+     * @param operModelNode operation in ModelNode
+     * @return operation result in ModelNode
+     * @throws Exception
+     */
     private ModelNode invokeOperationByHttp(String ip, ModelNode operModelNode) throws Exception {
 
         DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -228,7 +235,6 @@ public class ManagementServiceImpl extends RemoteServiceServlet implements Manag
                 EntityUtils.consume(entity);
 
                 ModelNode returnModelNode = ModelNode.fromBase64(sb.toString());
-//                System.out.println(returnModelNode.toString());
                 return returnModelNode;
 
             }
